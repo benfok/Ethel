@@ -18,11 +18,15 @@ const itemSchema = new Schema({
       type: Boolean,
       required: true,
       default: false,
+    },
+    },
+    {
+        _id: false
     }
-  });
+);
 
   const listSchema = new Schema({
-    itemText: {
+    listName: {
         type: String,
         required: true,
         trim: true,
