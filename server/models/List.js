@@ -22,7 +22,7 @@ const itemSchema = new Schema({
   });
 
   const listSchema = new Schema({
-    itemText: {
+    listName: {
         type: String,
         required: true,
         trim: true,
