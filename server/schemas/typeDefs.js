@@ -7,13 +7,37 @@ const typeDefs = gql`
     lastName: String
     email: String
     password: String
+    categories: [Category]
+    shareHistory: [User]
+  }
+
+  type Category {
+      _id: ID
+      categoryName: String
+      color: String
+      lists: [List]
+  }
+
+  type List {
+      _id: ID
+      listName: String
+      owner: String
+      items: [Item]
+      sharedWith: [User]
+      createdAt: Date
+  }
+
+  type Item {
+      itemText: String
+      completed: Boolean
+      deleted: Boolean
   }
 
   type Auth {
     token: ID!
     user: User
   }
-  
+
     type Query {
     users: [User]
     user(email: String!): User
