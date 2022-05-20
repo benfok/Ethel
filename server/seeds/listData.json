@@ -1,0 +1,22 @@
+[
+    {
+        "listName": "Groceries",
+        "items": ["Bread", "Earl Grey Tea", "Blueberry Pie", "Biscuits", "Spinach (watching my figure!)", "Cookies for my darling grandchildren", "Cat Food"]
+    },
+    {
+        "listName": "XMas Gifts for Grandson",
+        "items": ["Toy train set", "Tickle Me Elmo", "Bunny Rabbit Pajamas", "Animal Crossing"]
+    },
+    {
+        "listName": "Xmas Gifts for Granddaughter",
+        "items": ["Software Engineer Barbie", "Minecraft", "Jenga", "Play-Dough"]
+    },
+    {
+        "listName": "To-Do List",
+        "items": ["Hit the gym!", "Help my fans get organized", "Bake my famous blueberry pie", "Feed Mr. Whiskerson"]
+    },
+    {
+        "listName": "My Favorite Movies",
+        "items": ["The Wizard of Oz", "The Sound of Music", "Gone with the Wind", "50 Shades of Grey"]
+    }
+]
