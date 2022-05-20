@@ -13,10 +13,10 @@ db.once('open', async () => {
 
         const user = await User.create(userSeed);
 
-        const createLists = (data) => {
+        const createLists = async (data) => {
             for(let i = 0; i < data.length; i++) {
                 const list = data[i];
-                list.owner - user._id
+                list.owner = user[0]._id
                 await List.create(list)
                     .then((list) => {
                         listArray.push(list._id)
@@ -26,9 +26,9 @@ db.once('open', async () => {
 
         const addListsToCategories = (lists) => {
             let catData = categorySeed;
-            catData.categories[0].lists = [lists[0], lists[1], lists[2]];
-            catData.categories[1].lists = [lists[3]];
-            catData.categories[2].lists = [lists[4]];
+            catData[0].lists = [lists[0], lists[1], lists[2]];
+            catData[1].lists = [lists[3]];
+            catData[2].lists = [lists[4], lists[5]];
 
             return catData;
         };
@@ -36,11 +36,9 @@ db.once('open', async () => {
         const addCategoriesToUser = async () => {
             const completeCatagoryData = await addListsToCategories(listArray);
             await User.findByIdAndUpdate(
-                user._id,
+                user[0]._id, { categories: completeCatagoryData },
                 {
-                    $set: {
-                        categories: completeCatagoryData
-                    }
+                    new: true
                 }
             )
         }        
