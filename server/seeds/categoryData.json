@@ -1,0 +1,17 @@
+[
+    {
+        "categoryName": "Shopping Lists", 
+        "color": "#ff0000",
+        "lists": []
+    },
+    {
+        "categoryName": "To-Do Lists", 
+        "color": "#1500ff",
+        "lists": []
+    },
+    {
+        "categoryName": "My Favorites", 
+        "color": "#00ff04",
+        "lists": []
+    }
+]
