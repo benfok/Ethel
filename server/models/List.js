@@ -29,13 +29,13 @@ const itemSchema = new Schema({
         maxlength: 30,
     },
     owner: {
-        type: mongoose.Schema.Types.ObjectId
+        type: Schema.Types.ObjectId
     },
     items: [itemSchema],
     sharedWith: [
         // creates an array of objects. This field is the Type of ObjectId (the Mongo specific id). The ref property connects this to the user model.
         {
-          type: mongoose.Schema.Types.ObjectId,
+          type: Schema.Types.ObjectId,
           ref: 'user'
         } 
     ],

@@ -24,7 +24,7 @@ const typeDefs = gql`
       owner: String
       items: [Item]
       sharedWith: [User]
-      createdAt: Date
+      createdAt: String
   }
 
   type Item {
