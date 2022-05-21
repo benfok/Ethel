@@ -6,7 +6,7 @@
 }
 
 :root {
-  --headerBg: purple;
+  --headerBg: rgb(28, 165, 165);
   --headerFont: white;
   --mainBg: whitesmoke; 
   --secondaryBg: grey;
