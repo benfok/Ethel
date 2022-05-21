@@ -3,6 +3,7 @@ import '../styles/layout.css';
 import '../styles/welcome.css';
 import useMedia from '../hooks/useMedia'
 import { Link } from "react-router-dom";
+import ethylPic from "../assets/ethyl.jpg";
 
 export default function Home() {
 
@@ -10,8 +11,8 @@ export default function Home() {
 
   return (
     <section className="main-content">
-      <img src="../../public/ethyl1.png" alt="Ethyl" />
       <h2>Hello there, I'm Ethyl!</h2>
+      <img src= {ethylPic} alt="Ethyl" />
         <p>
           I used to always lose track of my things, but then I learned to organize everything by keeping lists. Now I'm the most efficient granny around, and I can help you whippersnappers do the same! 
         </p>
