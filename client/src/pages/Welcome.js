@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/layout.css';
 import '../styles/welcome.css';
 import useMedia from '../hooks/useMedia'
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import ethylPic from "../assets/ethyl.jpg";
 
 import Auth from '../utils/auth';
@@ -12,14 +12,12 @@ export default function Welcome() {
   
   const isDesktop = useMedia('(min-width: 998px)');
 
-  // const data = Auth.getProfile()
-
-  // if(data){
-  //   console.log(data)
-  // } else {console.log('no data')}
+  if(Auth.loggedIn()){
+    return <Navigate to="/home" />
+  } else {
 
   return (
-    <>
+    <section className="main-content">
       <div id="greeting">
         <h2>Hello there, I'm Ethyl!</h2>
         <img src= {ethylPic} alt="Ethyl" />
@@ -47,6 +45,6 @@ export default function Welcome() {
             </button>
           </Link>
           </div>
-     </>
+     </section>
   );
 }

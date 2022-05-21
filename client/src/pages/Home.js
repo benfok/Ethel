@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/layout.css';
-import Welcome from './Welcome';
 import UserHome from './UserHome';
+import { Link } from 'react-router-dom';
 
 import Auth from '../utils/auth';
 
@@ -12,7 +12,21 @@ export default function Home() {
         {Auth.loggedIn() ? (
             <UserHome />
         ) : (
-            <Welcome />
+            <>
+                <h2>You must be logged in to view this page</h2>
+                <div className="btn-container-center">
+                    <Link to="/login">
+                        <button className="btn-primary">
+                        Login
+                        </button>
+                    </Link>
+                    <Link to="/signup">
+                        <button className="btn-primary">
+                        Signup
+                        </button>
+                    </Link>
+                </div>
+            </>
         )}
     </section>
   );
