@@ -26,7 +26,13 @@ const resolvers = {
 
   Mutation: {
     addUser: async (parent, { firstName, lastName, email, password }) => {
-      const user = await User.create({ firstName, lastName, email, password });
+      // insert default category upon user creation
+      const categories = [{
+        categoryName: "New Lists", 
+        color: "#8D8896",
+        lists: []
+      }];
+      const user = await User.create({ firstName, lastName, email, password, categories });
       const token = signToken(user);
       return { token, user };
     },
