@@ -14,17 +14,17 @@ export default function Home() {
           <p>
             This is the home screen
           </p>
-          <div className="home-buttons">
-              <button class="btn-primary">
-                  <Link to="/login">
+          <div className="btn-container-center">
+                <Link to="/login">
+                    <button class="btn-primary">
                       Login
-                  </Link>
-              </button>
-              <button class="btn-primary">
-                  <Link to="/signup">
+                    </button>
+                </Link>
+                <Link to="/signup">
+                    <button class="btn-primary">
                       Signup
-                  </Link>
-              </button>
+                    </button>
+                </Link>
           </div>
     </section>
   );
