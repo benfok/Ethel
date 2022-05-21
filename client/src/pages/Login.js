@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 import '../styles/layout.css';
+import '../styles/login.css'
+import yarnPic from "../assets/yarn.png";
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -33,9 +35,10 @@ function Login(props) {
   return (
     <section className="main-content">
       <div className="btn-container-left btn-back">
-        <Link to="/signup">← Go to Signup</Link>
+        <Link to="/signup" className="back-btn-link">← Go to Signup</Link>
       </div>       
       <h2>Login</h2>
+      <img src={yarnPic} alt="yarn" />
       <form onSubmit={handleFormSubmit}>
         <label htmlFor="email">Email address:</label>
         <input

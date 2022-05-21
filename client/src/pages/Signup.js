@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
+import '../styles/login.css'
+import yarnPic from "../assets/yarn.png";
 
 function Signup(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -33,9 +35,10 @@ function Signup(props) {
   return (
     <section className="main-content">
       <div className="btn-container-left btn-back">
-        <Link to="/login">← Go to Login</Link>
+        <Link to="/login" className="back-btn-link">← Go to Login</Link>
       </div> 
       <h2>Signup</h2>
+      <img src={yarnPic} alt="yarn" />
       <form onSubmit={handleFormSubmit}>
           <label htmlFor="firstName">First Name:</label>
           <input
