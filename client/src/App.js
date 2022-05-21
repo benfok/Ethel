@@ -51,6 +51,10 @@ function App() {
             <Routes>
               <Route 
                 path="/" 
+                element={<Welcome />} 
+              />
+              <Route 
+                path="/home" 
                 element={<Home />} 
               />
               <Route 
@@ -67,7 +71,7 @@ function App() {
               />
               <Route 
                 path="*" 
-                element={<Home />} 
+                element={<Welcome />} 
               />
             </Routes>
           </main>
