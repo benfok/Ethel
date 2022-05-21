@@ -31,7 +31,7 @@ function Signup(props) {
   };
 
   return (
-    <div className="main-content">
+    <section className="main-content">
       <div className="btn-container-left btn-back">
         <Link to="/login">← Go to Login</Link>
       </div> 
@@ -81,7 +81,7 @@ function Signup(props) {
           <button class="btn-primary" type="submit">Submit</button>
         </div>
       </form>
-    </div>
+    </section>
   );
 }
 

@@ -7,6 +7,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@ap
 
 //import pages and components
 import './App.css';
+import Welcome from './pages/Welcome';
 import Home from './pages/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -49,7 +50,7 @@ function App() {
             <Routes>
               <Route 
                 path="/" 
-                element={<Home />} 
+                element={<Welcome />} 
               />
               <Route 
                 path="/login" 
