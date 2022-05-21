@@ -78,7 +78,7 @@ function Signup(props) {
             onChange={handleChange}
           />
         <div className="btn-container-left">
-          <button class="btn-primary" type="submit">Submit</button>
+          <button className="btn-primary" type="submit">Submit</button>
         </div>
       </form>
     </section>
