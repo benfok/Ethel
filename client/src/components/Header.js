@@ -17,6 +17,9 @@ const Header = () => {
         Auth.logout();
     };
 
+    console.log(Auth.loggedIn());
+
+
 
     return (
         <header>
@@ -36,16 +39,16 @@ const Header = () => {
             <h1>Ethyl</h1>
             {Auth.loggedIn() ? (
                 <IconContext.Provider value={{ className: "header-icon" }}>
-                    <Link to="/">
+                    <a href="/" onClick={logout}>
                         <IoMdLogOut />
-                    </Link>
+                    </a>
                 </IconContext.Provider>
             ) : (
-                <div onclick={logout}>
-                    <IconContext.Provider value={{ className: "header-icon" }}>
-                            <IoMdLogIn />
-                    </IconContext.Provider>
-                </div>
+                <IconContext.Provider value={{ className: "header-icon" }}>
+                    <Link to="/login">
+                        <IoMdLogIn />
+                    </Link>
+                </IconContext.Provider>
             )}
         </header>
     )
