@@ -3,7 +3,7 @@ import '../styles/layout.css';
 import '../styles/welcome.css';
 import useMedia from '../hooks/useMedia'
 import { Link, Navigate } from "react-router-dom";
-import ethylPic from "../assets/ethyl.jpg";
+import ethylPic from "../assets/ethyltall.jpg";
 
 import Auth from '../utils/auth';
 
