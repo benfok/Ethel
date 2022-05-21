@@ -9,15 +9,14 @@ export default function Welcome() {
   
   const isDesktop = useMedia('(min-width: 998px)');
 
-  const data = Auth.getProfile()
+  // const data = Auth.getProfile()
 
-  if(data){
-    console.log(data)
-  } else {console.log('no data')}
+  // if(data){
+  //   console.log(data)
+  // } else {console.log('no data')}
 
   return (
     <>
-      <img src="../../public/ethyl1.png" alt="Ethyl" />
       <h2>Hello there, I'm Ethyl!</h2>
       <p>
       I used to always lose track of my things, but then I learned to organize everything by keeping lists. Now I'm the most efficient granny around, and I can help you whippersnappers do the same! 
@@ -37,7 +36,7 @@ export default function Welcome() {
                 </button>
             </Link>
             <Link to="/demo">
-                <button class="btn-primary">
+                <button className="btn-primary">
                   Demo
                 </button>
             </Link>
