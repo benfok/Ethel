@@ -20,8 +20,10 @@ export default function Welcome() {
 
   return (
     <>
-      <h2>Hello there, I'm Ethyl!</h2>
-      <img src= {ethylPic} alt="Ethyl" />
+      <div id="greeting">
+        <h2>Hello there, I'm Ethyl!</h2>
+        <img src= {ethylPic} alt="Ethyl" />
+      </div>
         <p>
           I used to always lose track of my things, but then I learned to organize everything by keeping lists. Now I'm the most efficient granny around, and I can help you whippersnappers do the same! 
         </p>
