@@ -5,6 +5,12 @@ import { setContext } from '@apollo/client/link/context';
 // bring in ApolloClient, the cache where data and queries are cached and ApolloProvider which allows us to create a sort of global scope, the data wherein can be accessed by any child components
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 
+//import pages and components
+import './App.css';
+import Home from './pages/Home';
+import Header from './components/Header';
+import Footer from './components/Footer';
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',

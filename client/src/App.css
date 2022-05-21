@@ -8,7 +8,8 @@
 :root {
   --headerBg: #53ACC7;
   --headerFont: white;
-  --bodyBg: whitesmoke; 
+  --mainBg: whitesmoke; 
+  --secondaryBg: grey;
   --primaryFont: #261C15;
   --secondaryFont: grey;
   --errorText: #C42021;
@@ -23,8 +24,15 @@ body {
   font-family: 'Barlow Semi Condensed', Tahoma, Verdana, sans-serif;
 }
 
+.container {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bodybg);
+}
+
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 .hidden {
@@ -33,4 +41,22 @@ a {
 
 .isFixed {
   position: fixed;
+}
+
+.btn-primary {
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 80%;
+  width: 100px;
+  background-color: var(--headerFont);
+  border: solid 2px var(--headerBg);
+  color: var(--primaryFont);
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+  cursor: pointer;
+  background: var(--headerBg);
+  border: solid 2px var(--headerBg);
+  color: var(--headerFont);
 }
