@@ -17,10 +17,6 @@ const Header = () => {
         Auth.logout();
     };
 
-    console.log(Auth.loggedIn());
-
-
-
     return (
         <header>
             {Auth.loggedIn() ? (
