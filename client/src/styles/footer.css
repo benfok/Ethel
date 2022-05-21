@@ -1,0 +1,9 @@
+footer {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--secondaryFont);
+    margin-top: 20px;
+    height: 60px;
+}
