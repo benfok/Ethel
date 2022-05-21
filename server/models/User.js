@@ -1,27 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-
-// created as a nested schema within users
-const categorySchema = new Schema({
-  categoryName: {
-    type: String,
-    required: true,
-    trim: true,
-    maxlength: 30,
-  },
-  color: {
-    type: String,
-    required: true,
-    default: '#C9CBCC',
-  },
-  lists: [
-    // creates an array of objects. This field is the Type of ObjectId (the Mongo specific id). The ref property connects this to the list model.
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'list'
-    } 
-  ],
-});
+const Category = require('./Category');
+const List = require('./List');
 
 const userSchema = new Schema({
   firstName: {
@@ -47,12 +27,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 6,
   },
-  categories: [categorySchema],
+  categories: [Category.schema],
   shareHistory: [
     // creates an array of objects. This field is the Type of ObjectId (the Mongo specific id). The ref property connects this to the user model.
     {
       type: Schema.Types.ObjectId,
-      ref: 'user'
+      ref: 'User'
     } 
   ],
 },    

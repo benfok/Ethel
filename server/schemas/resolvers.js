@@ -1,15 +1,27 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, List, Category } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find();
+      return User.find().populate({path: 'categories.lists', populate: 'items'});
     },
     user: async (parent, { email }) => {
-      return User.findOne({ email });
+      return User.findOne({ email }).populate({path: 'categories.lists', populate: 'items'});
     },
+    currentUser: async (parent, args, context) => {
+        if (context.user) {
+          return User.findOne({ _id: context.user._id }).populate({path: 'categories.lists', populate: 'items'});
+        }
+        throw new AuthenticationError('You need to be logged in!');
+    },
+    category: async (parent, args, context) => {
+        // if (context.user) {
+            return Category.findById(args.id).populate('lists');
+        // }
+        // throw new AuthenticationError('You need to be logged in!');
+    }
   },
 
   Mutation: {
