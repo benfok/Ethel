@@ -5,12 +5,21 @@ import useMedia from '../hooks/useMedia'
 import { Link } from "react-router-dom";
 import ethylPic from "../assets/ethyl.jpg";
 
-export default function Home() {
+import Auth from '../utils/auth';
 
+
+export default function Welcome() {
+  
   const isDesktop = useMedia('(min-width: 998px)');
 
+  // const data = Auth.getProfile()
+
+  // if(data){
+  //   console.log(data)
+  // } else {console.log('no data')}
+
   return (
-    <section className="main-content">
+    <>
       <h2>Hello there, I'm Ethyl!</h2>
       <img src= {ethylPic} alt="Ethyl" />
         <p>
@@ -21,21 +30,21 @@ export default function Home() {
         </p>
         <div className="btn-container-center">
           <Link to="/login">
-            <button class="btn-primary">
+            <button className="btn-primary">
               Login
             </button>
           </Link>
           <Link to="/signup">
-            <button class="btn-primary">
+            <button className="btn-primary">
               Signup
             </button>
           </Link>
           <Link to="/demo">
-            <button class="btn-primary">
+            <button className="btn-primary">
               Demo
             </button>
           </Link>
           </div>
-    </section>
+     </>
   );
 }
