@@ -1,8 +1,3 @@
-/* section {
-    padding: 2% 10%;
-    margin-top: 80px;
-} */
-
 #greeting {
     display: flex;
     flex-direction: column;
@@ -15,10 +10,6 @@ h2 {
     margin-top: 10%;
     font-size: 1.5em;
 }
-
-/* img {
-    max-height: 
-} */
 
 p {
     margin-bottom: 5%;
