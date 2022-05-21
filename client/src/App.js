@@ -51,7 +51,7 @@ function App() {
             <Routes>
               <Route 
                 path="/" 
-                element={<Welcome />} 
+                element={<Home />} 
               />
               <Route 
                 path="/login" 
