@@ -9,7 +9,7 @@
   --headerBg: rgb(169, 63, 211);
   --headerFont: white;
   --mainBg: whitesmoke; 
-  --secondaryBg: rgb(209, 209, 209);
+  --secondaryBg: white;
   --primaryFont: #261C15;
   --secondaryFont: grey;
   --errorText: #C42021;
@@ -51,6 +51,7 @@ a {
   background-color: var(--headerFont);
   border: solid 2px var(--headerBg);
   color: var(--primaryFont);
+  text-align: center;
 }
 
 .btn-primary:hover,
@@ -59,6 +60,37 @@ a {
   background: var(--headerBg);
   border: solid 2px var(--headerBg);
   color: var(--headerFont);
+}
+
+.btn-secondary {
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 80%;
+  width: 100px;
+  background-color: var(--headerBg);
+  border: solid 2px var(--headerBg);
+  color: var(--headerFont);
+  text-align: center;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active {
+  cursor: pointer;
+  background: var(--headerFont);
+  border: solid 2px var(--headerBg);
+  color: var(--primaryFont);
+}
+
+.btn-back {
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px var(--primaryFont);
+  font-size: 90%;
+}
+
+.btn-back:hover {
+  color: var(--headerBg);
+  border-bottom: solid 1px var(--headerBg);
 }
 
 .error-text {

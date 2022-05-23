@@ -34,9 +34,6 @@ function Signup(props) {
 
   return (
     <section className="main-content">
-      <div className="btn-container-left btn-back">
-        <Link to="/login" className="back-btn-link">← Go to Login</Link>
-      </div> 
       <h2>Signup</h2>
       <img src={yarnPic} alt="yarn" />
       <form onSubmit={handleFormSubmit}>
@@ -82,6 +79,7 @@ function Signup(props) {
           />
         <div className="btn-container-left">
           <button className="btn-primary" type="submit">Submit</button>
+          <div className="btn-back"><Link to="/login">Login</Link></div>
         </div>
       </form>
     </section>

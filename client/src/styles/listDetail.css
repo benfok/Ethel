@@ -1,0 +1,32 @@
+.item-container {
+    border: solid 1px black;
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
+    background-color: var(--secondaryBg);
+}
+
+.item {
+    font-size: 90%;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-label {
+    vertical-align: middle;
+    flex-grow: 2;
+    margin: 0;
+    padding: 10px;
+}
+
+.item-delete-icon {
+    padding: 2px;
+    font-size: 120%;
+    border-radius: 5px;
+    color: var(--secondaryFont);
+}
+
+.item-delete-icon:hover {
+    cursor: pointer;
+    color: var(--primaryFont);
+}
