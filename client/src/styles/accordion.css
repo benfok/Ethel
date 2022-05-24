@@ -1,0 +1,26 @@
+.accordion-container {
+    width: 90%;
+}
+
+.list {
+    list-style-type: none;
+    padding: 1rem;
+    width: 100%;
+    border: solid 1px var(--primaryFont);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
+    background-color: var(--secondaryBg);
+}
+
+.list:hover {
+    cursor: pointer;
+}
+
+.list-icon {
+    font-size: 150%;
+    color: var(--primaryFont);
+}
+

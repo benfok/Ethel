@@ -9,11 +9,12 @@
   --headerBg: rgb(169, 63, 211);
   --headerFont: white;
   --mainBg: whitesmoke; 
-  --secondaryBg: rgb(209, 209, 209);
+  --secondaryBg: white;
   --primaryFont: #261C15;
   --secondaryFont: grey;
   --errorText: #C42021;
   --highlightText: #157145;
+  --fontFamily: 'Barlow Semi Condensed', Tahoma, Verdana, sans-serif;
 }
 
 body {
@@ -21,7 +22,7 @@ body {
   font-size: 20px;
   /* sets the space between lines of text */
   line-height: 1.2;
-  font-family: 'Barlow Semi Condensed', Tahoma, Verdana, sans-serif;
+  font-family: var(--fontFamily);
 }
 
 .container {
@@ -51,14 +52,58 @@ a {
   background-color: var(--headerFont);
   border: solid 2px var(--headerBg);
   color: var(--primaryFont);
+  text-align: center;
 }
 
 .btn-primary:hover,
-.btn-primary:active {
+.btn-primary:active,
+.btn-list-action:hover,
+.btn-list-action:active {
   cursor: pointer;
   background: var(--headerBg);
   border: solid 2px var(--headerBg);
   color: var(--headerFont);
+}
+
+.btn-secondary {
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 80%;
+  width: 100px;
+  background-color: var(--headerBg);
+  border: solid 2px var(--headerBg);
+  color: var(--headerFont);
+  text-align: center;
+}
+
+.btn-list-action {
+  padding: 10px;
+  border-radius: 5px;
+  width: 60px;
+  background-color: var(--headerFont);
+  border: solid 2px var(--headerBg);
+  color: var(--primaryFont);
+  text-align: center;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active {
+  cursor: pointer;
+  background: var(--headerFont);
+  border: solid 2px var(--headerBg);
+  color: var(--primaryFont);
+}
+
+.btn-back {
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px var(--primaryFont);
+  font-size: 90%;
+}
+
+.btn-back:hover {
+  color: var(--headerBg);
+  border-bottom: solid 1px var(--headerBg);
 }
 
 .error-text {

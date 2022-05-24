@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/dropdown.css';
 import { FaSquare } from 'react-icons/fa';
 
 // dropdown takes in a an options array and an onChange function
