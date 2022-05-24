@@ -3,25 +3,17 @@ const { formatDate } = require('../utils/utils');
 
 // created as a nested schema within users
 const itemSchema = new Schema({
-    itemText: {
-      type: String,
-      required: true,
-      trim: true,
-      maxlength: 50,
-    },
-    completed: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-    deleted: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-    },
-    {
-        _id: false
+      itemText: {
+        type: String,
+        required: true,
+        trim: true,
+        maxlength: 50,
+      },
+      completed: {
+        type: Boolean,
+        required: true,
+        default: false,
+      },
     }
 );
 

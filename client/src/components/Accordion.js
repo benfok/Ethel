@@ -27,30 +27,30 @@ const Accordion = ({categoryData, listIndex}) => {
       listData =
         categoryData.map((category) => (
           category.lists.map((list, index) => (
-            <>
-              <div key={list._id} className="list" data-index={index} onClick={event => handleActiveListChange(event, list._id)} style={{borderRight: `solid 15px ${category.color}` }}>
+            <div key={list._id} >
+              <div className="list" data-index={index} onClick={event => handleActiveListChange(event, list._id)} style={{borderRight: `solid 15px ${category.color}` }}>
                 <span>{list.listName}</span>
                 <IconContext.Provider value={{ className: "list-icon" }}>
                   {activeList === list._id ? <IoIosArrowDropdownCircle /> : <IoIosArrowDropright />}
                 </IconContext.Provider>
               </div>
             {activeList === list._id && <ListDetail listData={list} key={`listDetail-${index}`} />}
-            </>
+            </div>
           ))
         ))
   } else {
     // will return lists from the selected category only
       listData = 
         categoryData[listIndex].lists.map((list, index) => (
-          <>
-            <div key={list._id} className="list" data-index={index} onClick={event => handleActiveListChange(event, list._id)} style={{borderRight: `solid 15px ${categoryData[listIndex].color}` }}>
+          <div key={list._id} >
+            <div className="list" data-index={index} onClick={event => handleActiveListChange(event, list._id)} style={{borderRight: `solid 15px ${categoryData[listIndex].color}` }}>
                 <span>{list.listName}</span>
                 <IconContext.Provider value={{ className: "list-icon" }}>
                   {activeList === list._id ? <IoIosArrowDropdownCircle /> : <IoIosArrowDropright />}
                 </IconContext.Provider>
             </div>
             {activeList === list._id && <ListDetail listData={list} key={`listDetail-${index}`} />}
-          </>
+          </div>
         ))
   }
 

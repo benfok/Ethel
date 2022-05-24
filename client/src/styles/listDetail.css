@@ -1,28 +1,35 @@
-.item-container {
+.list-card {
     border: solid 1px black;
+    border-top: none;
     box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
     background-color: var(--secondaryBg);
+    padding-top: 1rem;
 }
 
 .item {
-    font-size: 90%;
-    padding: 0 15px;
+    padding: 0 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 .item-label {
-    vertical-align: middle;
+    font-size: 80%;
     flex-grow: 2;
     margin: 0;
-    padding: 10px;
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .item-delete-icon {
-    padding: 2px;
     font-size: 120%;
-    border-radius: 5px;
     color: var(--secondaryFont);
 }
 
@@ -30,3 +37,87 @@
     cursor: pointer;
     color: var(--primaryFont);
 }
+
+.list-action-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row nowrap;
+    justify-content: center;
+    gap: 2%;
+    padding: 2rem 1rem 1rem 1rem;
+    font-size: 90%;
+}
+
+.new-item-container {
+    width: 100%;
+    padding: 0 10px;
+    margin-bottom: 2rem;
+}
+
+.new-item {
+    resize: none;
+    width: 100%;
+    padding: 5px 10px;
+    font-family: var(--fontFamily);
+}
+
+.list-shared-p {
+    font-size: 80%;
+    color: var(--secondaryFont);
+}
+
+/* custom checkbox */
+ 
+  /* Hide the browser's default checkbox */
+  .item-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .custom-checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .item-label:hover input ~ .custom-checkbox {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .item-label input:checked ~ .custom-checkbox {
+    background-color: var(--headerBg);
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .custom-checkbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .item-label input:checked ~ .custom-checkbox:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .item-label .custom-checkbox:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--headerFont);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }

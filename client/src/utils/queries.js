@@ -16,9 +16,9 @@ export const QUERY_CURRENT_USER = gql`
                 listName
                 owner
                 items {
+                    _id
                     itemText
                     completed
-                    deleted
                 }
                 sharedWith {
                     _id

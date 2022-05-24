@@ -28,9 +28,9 @@ const typeDefs = gql`
   }
 
   type Item {
+      _id: ID
       itemText: String
       completed: Boolean
-      deleted: Boolean
   }
 
   type Auth {
