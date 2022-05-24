@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Dropdown from '../components/Dropdown';
 import Accordion from '../components/Accordion';
 import { useQuery } from '@apollo/client';
+import '../styles/layout.css';
+// import { useCurrentUserContext } from '../contexts/CurrentUserContext';
+// import { CurrentUserContextProvider } from '../contexts/CurrentUserContext';
 
 import { QUERY_CURRENT_USER } from '../utils/queries';
 
 export default function Home() {
     const [ category, setCategory ] = useState('default');
     const [ optionIndex, setOptionIndex ] = useState();
+    // const { currentUser, dispatch } = useCurrentUserContext();
 
     
     const handleCategoryChange = (event) => {
@@ -24,8 +28,13 @@ export default function Home() {
     }
     
     if (data) {
-
+        // console.log('DB data:', data);
+        // dispatch({
+        //     type: 'SET_CURRENT_USER_DATA',
+        //     currentUser: data
+        // })
         return (
+        // <CurrentUserContextProvider>
         <>
             <h2>User Home Screen</h2>
             <Dropdown
@@ -37,6 +46,7 @@ export default function Home() {
                 categoryData={data.currentUser.categories} 
                 listIndex={optionIndex}
             />
+        {/* </CurrentUserContextProvider> */}
         </>
         );
     }

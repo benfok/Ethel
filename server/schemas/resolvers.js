@@ -54,6 +54,17 @@ const resolvers = {
 
       return { token, user };
     },
+    addItem: async (parent, { listId, itemText }, context) => {
+      if(context.user) {
+        const item = await List.findOneAndUpdate(
+          { _id: listId },
+          { $push: { items: { itemText: itemText } } },
+          { new: true }
+        )
+        return item
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 };
 
