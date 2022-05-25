@@ -6,7 +6,7 @@ import '../styles/layout.css';
 // import { useCurrentUserContext } from '../contexts/CurrentUserContext';
 // import { CurrentUserContextProvider } from '../contexts/CurrentUserContext';
 
-import { QUERY_CURRENT_USER } from '../utils/queries';
+import { QUERY_CURRENT_USER_ALL_DATA } from '../utils/queries';
 
 export default function Home() {
     const [ category, setCategory ] = useState('default');
@@ -14,21 +14,22 @@ export default function Home() {
     // const { currentUser, dispatch } = useCurrentUserContext();
 
     
+    
     const handleCategoryChange = (event) => {
         setCategory(event.target.value);
-        const chosenCategory = event.target.options[event.target.selectedIndex]
+        const chosenCategory = event.target.options[event.target.selectedIndex];
         document.getElementById('category-icon').style.color = chosenCategory.dataset.color;
         setOptionIndex(chosenCategory.dataset.index)
     };
     
-    const { loading, data } = useQuery(QUERY_CURRENT_USER)
+    const { loading, data } = useQuery(QUERY_CURRENT_USER_ALL_DATA)
     
     if (loading) {
         return <div>Loading...</div>;
     }
     
     if (data) {
-        // console.log('DB data:', data);
+        console.log('DB data:', data);
         // dispatch({
         //     type: 'SET_CURRENT_USER_DATA',
         //     currentUser: data
