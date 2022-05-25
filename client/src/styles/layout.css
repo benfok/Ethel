@@ -3,9 +3,9 @@
     min-height: 100vh;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    background-color: var(--bodybg);
+    background-color: var(--mainBg);
 }
 
 form {
@@ -40,10 +40,6 @@ label {
     justify-content: flex-start;
     gap: 20px;
     padding: 1rem 1rem 1rem 0;
-}
-
-.btn-back {
-    padding-left: 3rem;
 }
 
 h2 {

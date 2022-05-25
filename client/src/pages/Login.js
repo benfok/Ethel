@@ -33,10 +33,7 @@ function Login(props) {
   };
 
   return (
-    <section className="main-content">
-      <div className="btn-container-left btn-back">
-        <Link to="/signup" className="back-btn-link">← Go to Signup</Link>
-      </div>       
+    <section className="main-content">   
       <h2>Login</h2>
       <img src={yarnPic} alt="yarn" />
       <form onSubmit={handleFormSubmit}>
@@ -63,8 +60,9 @@ function Login(props) {
             <p className="error-text">The provided credentials are incorrect</p>
           </div>
         ) : null}
-        <div className="btn-container-left">
+        <div className="btn-container-center">
           <button className="btn-primary" type="submit">Submit</button>
+          <div className="btn-back"><Link to="/signup">Go To Signup</Link></div>
         </div>
       </form>
     </section>

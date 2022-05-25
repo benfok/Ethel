@@ -7,7 +7,7 @@ const resolvers = {
     users: async () => {
       return User.find().populate({path: 'categories.lists', populate: 'items'});
     },
-    user: async (parent, { email }) => {
+    userAllData: async (parent, { email }) => {
       return User.findOne({ email }).populate({path: 'categories.lists', populate: 'items'});
     },
     currentUser: async (parent, args, context) => {
@@ -16,17 +16,33 @@ const resolvers = {
         }
         throw new AuthenticationError('You need to be logged in!');
     },
-    category: async (parent, args, context) => {
+    currentUserLite: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate('categories');
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    category: async (parent, { categoryId }, context) => {
         // if (context.user) {
-            return Category.findById(args.id).populate('lists');
+          return User.findOne({ _id: '628d3e1c6a355f9030b942c9' }).populate({
+            path: 'categories',
+            match: { _id: categoryId}
+          });
         // }
         // throw new AuthenticationError('You need to be logged in!');
-    }
+    },
   },
 
   Mutation: {
     addUser: async (parent, { firstName, lastName, email, password }) => {
-      const user = await User.create({ firstName, lastName, email, password });
+      // insert default category upon user creation
+      const categories = [{
+        categoryName: "Uncategorized", 
+        color: "#8D8896",
+        isEditable: false,
+        lists: []
+      }];
+      const user = await User.create({ firstName, lastName, email, password, categories });
       const token = signToken(user);
       return { token, user };
     },
@@ -47,6 +63,17 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addItem: async (parent, { listId, itemText }, context) => {
+      if(context.user) {
+        const item = await List.findOneAndUpdate(
+          { _id: listId },
+          { $push: { items: { itemText: itemText } } },
+          { new: true }
+        )
+        return item
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 };

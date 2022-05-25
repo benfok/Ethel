@@ -3,25 +3,17 @@ const { formatDate } = require('../utils/utils');
 
 // created as a nested schema within users
 const itemSchema = new Schema({
-    itemText: {
-      type: String,
-      required: true,
-      trim: true,
-      maxlength: 50,
-    },
-    completed: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-    deleted: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-    },
-    {
-        _id: false
+      itemText: {
+        type: String,
+        required: true,
+        trim: true,
+        maxlength: 50,
+      },
+      completed: {
+        type: Boolean,
+        required: true,
+        default: false,
+      },
     }
 );
 
@@ -36,6 +28,11 @@ const itemSchema = new Schema({
         type: Schema.Types.ObjectId
     },
     items: [itemSchema],
+    sharedList: {
+      type: Boolean,
+      required: true,
+      default: false
+    },
     sharedWith: [
         // creates an array of objects. This field is the Type of ObjectId (the Mongo specific id). The ref property connects this to the user model.
         {
