@@ -13,6 +13,11 @@ const categorySchema = new Schema({
       required: true,
       default: '#C9CBCC',
     },
+    userEditable: {
+      type: Boolean,
+      required: true,
+      default: true
+    },
     lists: [
       // creates an array of objects. This field is the Type of ObjectId (the Mongo specific id). The ref property connects this to the list model.
       {

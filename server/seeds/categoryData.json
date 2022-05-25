@@ -1,5 +1,10 @@
 [
     {
+        "categoryName": "Uncategorized", 
+        "color": "#8D8896",
+        "lists": []
+    },
+    {
         "categoryName": "Shopping Lists", 
         "color": "#ff0000",
         "lists": []
@@ -12,11 +17,6 @@
     {
         "categoryName": "My Favorites", 
         "color": "#00ff04",
-        "lists": []
-    },
-    {
-        "categoryName": "New Lists", 
-        "color": "#8D8896",
         "lists": []
     }
 ]
