@@ -28,6 +28,11 @@ const itemSchema = new Schema({
         type: Schema.Types.ObjectId
     },
     items: [itemSchema],
+    sharedList: {
+      type: Boolean,
+      required: true,
+      default: false
+    },
     sharedWith: [
         // creates an array of objects. This field is the Type of ObjectId (the Mongo specific id). The ref property connects this to the user model.
         {

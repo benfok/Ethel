@@ -28,7 +28,7 @@ const resolvers = {
     addUser: async (parent, { firstName, lastName, email, password }) => {
       // insert default category upon user creation
       const categories = [{
-        categoryName: "New Lists", 
+        categoryName: "Uncategorized", 
         color: "#8D8896",
         lists: []
       }];
