@@ -1,0 +1,24 @@
+.dropdown-menu {
+    width:90%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin: 2rem 0;
+}
+
+.dropdown-menu select {
+    padding: 1rem;
+    background-color: var(--secondaryBg);
+}
+
+.dropdown-menu select:hover {
+    cursor: pointer;
+}
+
+.dropdown-icon {
+    color: #8D8896;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+}

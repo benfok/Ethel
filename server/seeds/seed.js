@@ -26,9 +26,9 @@ db.once('open', async () => {
 
         const addListsToCategories = (lists) => {
             let catData = categorySeed;
-            catData[0].lists = [lists[0], lists[1], lists[2]];
-            catData[1].lists = [lists[3]];
-            catData[2].lists = [lists[4], lists[5]];
+            catData[1].lists = [lists[0], lists[1], lists[2]];
+            catData[2].lists = [lists[3]];
+            catData[3].lists = [lists[4], lists[5]];
 
             return catData;
         };
