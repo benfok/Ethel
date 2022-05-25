@@ -24,3 +24,16 @@ mutation addUser($firstName: String!, $lastName: String!, $email: String!, $pass
   }
 }
 `;
+
+export const ADD_ITEM = gql`
+mutation addItem($listId: ID!, $itemText: String!) {
+  addItem(listId: $listId, itemText: $itemText) {
+    _id
+    items {
+      _id
+      itemText
+      completed
+    }
+  }
+}
+`;
