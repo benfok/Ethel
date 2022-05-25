@@ -14,7 +14,9 @@ const typeDefs = gql`
   type Category {
       _id: ID
       categoryName: String
+      user: ID
       color: String
+      userEditable: Boolean
       lists: [List]
   }
 
@@ -23,6 +25,7 @@ const typeDefs = gql`
       listName: String
       owner: String
       items: [Item]
+      sharedList: Boolean
       sharedWith: [User]
       createdAt: String
   }
@@ -38,17 +41,19 @@ const typeDefs = gql`
     user: User
   }
 
-    type Query {
+  type Query {
     users: [User]
-    user(email: String!): User
-    category(id: ID!): Category
+    userAllData(email: String!): User
+    category(categoryId: ID!): User
     currentUser: User
+    currentUserLite: User
   }
 
   type Mutation {
     addUser(firstName: String!, lastName: String! email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addItem(listId: ID!, itemText: String!): List
+    addCategory(user: ID!, categoryName: String!, color: String!): Category
   }
 `;
 

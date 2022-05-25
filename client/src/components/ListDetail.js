@@ -109,5 +109,4 @@ const ListDetail = ({listData}) => {
     )
 }
 
-
 export default ListDetail;

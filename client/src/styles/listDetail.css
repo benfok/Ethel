@@ -60,6 +60,7 @@
     font-size: 100%;
     padding: 5px 10px;
     font-family: var(--fontFamily);
+    font-size: 100%;
 }
 
 .list-shared-p {
