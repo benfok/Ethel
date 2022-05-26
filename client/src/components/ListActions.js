@@ -4,6 +4,7 @@ const ListActions = (props) => {
 
     return (
         <>
+            <button className="btn-list-action">Close</button>
             <button className="btn-list-action">Share</button>
             <button className="btn-list-action">Move</button>
             <button className="btn-list-action">Delete</button>

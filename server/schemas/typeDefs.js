@@ -42,18 +42,18 @@ const typeDefs = gql`
   }
 
   type Query {
-    users: [User]
-    userAllData(email: String!): User
     category(categoryId: ID!): User
     currentUser: User
-    currentUserLite: User
+    list(listId: ID!): List
   }
 
   type Mutation {
     addUser(firstName: String!, lastName: String! email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addItem(listId: ID!, itemText: String!): List
-    addCategory(user: ID!, categoryName: String!, color: String!): Category
+    removeItem(listId: ID!, itemId: ID!): List
+    toggleItem(listId: ID!, itemId: ID!, checked: Boolean!): List
+    addCategory(categoryName: String!, color: String!): User
   }
 `;
 

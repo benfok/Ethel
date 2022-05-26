@@ -1,19 +1,19 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
+import CategoryManager from '../components/CategoryManager';
 import Dropdown from '../components/Dropdown';
 import Accordion from '../components/Accordion';
 import { useQuery } from '@apollo/client';
 import '../styles/layout.css';
-// import { useCurrentUserContext } from '../contexts/CurrentUserContext';
-// import { CurrentUserContextProvider } from '../contexts/CurrentUserContext';
 
-import { QUERY_CURRENT_USER_ALL_DATA } from '../utils/queries';
+import { QUERY_CURRENT_USER } from '../utils/queries';
 
 export default function Home() {
     const [ category, setCategory ] = useState('default');
     const [ optionIndex, setOptionIndex ] = useState();
-    // const { currentUser, dispatch } = useCurrentUserContext();
 
-    
+    const { loading, data } = useQuery(QUERY_CURRENT_USER, {
+        fetchPolicy: 'network-only'
+    })
     
     const handleCategoryChange = (event) => {
         setCategory(event.target.value);
@@ -22,7 +22,6 @@ export default function Home() {
         setOptionIndex(chosenCategory.dataset.index)
     };
     
-    const { loading, data } = useQuery(QUERY_CURRENT_USER_ALL_DATA)
     
     if (loading) {
         return <div>Loading...</div>;
@@ -30,24 +29,20 @@ export default function Home() {
     
     if (data) {
         console.log('DB data:', data);
-        // dispatch({
-        //     type: 'SET_CURRENT_USER_DATA',
-        //     currentUser: data
-        // })
+
         return (
-        // <CurrentUserContextProvider>
-        <>
+         <>
             <h2>User Home Screen</h2>
             <Dropdown
                 value={category}
                 onChange={handleCategoryChange}
                 options={data.currentUser.categories}
             />
-            <Accordion 
+            {!optionIndex && <CategoryManager categoryData={data.currentUser.categories} />}
+            {optionIndex && <Accordion 
                 categoryData={data.currentUser.categories} 
                 listIndex={optionIndex}
-            />
-        {/* </CurrentUserContextProvider> */}
+            />}
         </>
         );
     }
