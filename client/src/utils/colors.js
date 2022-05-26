@@ -1,4 +1,4 @@
-categoryColor = [
+export const categoryColor = [
     '#e94343',
     '#e98643',
     '#e9cb43',
