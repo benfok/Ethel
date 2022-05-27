@@ -34,56 +34,56 @@ function Signup(props) {
 
   return (
     <section className="main-content">
-      <div className="login-header">
-        <h2 className="login-h2">Signup</h2>
+      <h2 className="login-h2">Signup</h2>
+      <div className="login-content">
         <img className="yarn-pic" src={yarnPic} alt="yarn" />
+        <form onSubmit={handleFormSubmit}>
+            <label htmlFor="firstName">First Name:</label>
+            <input
+              className="form-field"
+              placeholder="First"
+              name="firstName"
+              type="firstName"
+              id="firstName"
+              required
+              onChange={handleChange}
+            />
+            <label htmlFor="lastName">Last Name:</label>
+            <input
+              className="form-field"
+              placeholder="Last"
+              name="lastName"
+              type="lastName"
+              id="lastName"
+              required
+              onChange={handleChange}
+            />
+            <label htmlFor="email">Email:</label>
+            <input
+              className="form-field"
+              placeholder="youremail@test.com"
+              name="email"
+              type="email"
+              id="email"
+              required
+              onChange={handleChange}
+            />
+            <label htmlFor="pwd">Password:</label>
+            <input
+              className="form-field"
+              placeholder="******"
+              name="password"
+              type="password"
+              id="pwd"
+              required
+              onChange={handleChange}
+            />
+          <div className="btn-container-left">
+            <button className="btn-primary" type="submit">Submit</button>
+            <div className="btn-back"><Link to="/login">Login</Link></div>
+          </div>
+        </form>
       </div>
-      <form onSubmit={handleFormSubmit}>
-          <label htmlFor="firstName">First Name:</label>
-          <input
-            className="form-field"
-            placeholder="First"
-            name="firstName"
-            type="firstName"
-            id="firstName"
-            required
-            onChange={handleChange}
-          />
-          <label htmlFor="lastName">Last Name:</label>
-          <input
-            className="form-field"
-            placeholder="Last"
-            name="lastName"
-            type="lastName"
-            id="lastName"
-            required
-            onChange={handleChange}
-          />
-          <label htmlFor="email">Email:</label>
-          <input
-            className="form-field"
-            placeholder="youremail@test.com"
-            name="email"
-            type="email"
-            id="email"
-            required
-            onChange={handleChange}
-          />
-          <label htmlFor="pwd">Password:</label>
-          <input
-            className="form-field"
-            placeholder="******"
-            name="password"
-            type="password"
-            id="pwd"
-            required
-            onChange={handleChange}
-          />
-        <div className="btn-container-left">
-          <button className="btn-primary" type="submit">Submit</button>
-          <div className="btn-back"><Link to="/login">Login</Link></div>
-        </div>
-      </form>
     </section>
   );
 }
