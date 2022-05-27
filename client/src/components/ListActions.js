@@ -1,13 +1,13 @@
 import React from "react";
 
-const ListActions = (props) => {
+const ListActions = ({editable}) => {
 
     return (
         <>
             <button className="btn-list-action">Refresh</button>
-            <button className="btn-list-action">Share</button>
-            <button className="btn-list-action">Move</button>
-            <button className="btn-list-action">Delete</button>
+            {editable && <button className="btn-list-action">Share</button>}
+            {editable && <button className="btn-list-action">Move</button>}
+            {editable && <button className="btn-list-action">Delete</button>}
         </>
     )
 
