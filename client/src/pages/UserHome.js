@@ -4,6 +4,7 @@ import Dropdown from '../components/Dropdown';
 import Accordion from '../components/Accordion';
 import { useQuery } from '@apollo/client';
 import '../styles/layout.css';
+import '../styles/home.css';
 
 import { QUERY_CURRENT_USER } from '../utils/queries';
 
@@ -32,7 +33,7 @@ export default function Home() {
 
         return (
          <>
-            <h2>User Home Screen</h2>
+            <h2 className="home-h2">My Lists</h2>
             <Dropdown
                 value={category}
                 onChange={handleCategoryChange}

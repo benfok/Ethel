@@ -34,39 +34,39 @@ function Login(props) {
 
   return (
     <section className="main-content"> 
-      <div className="login-header">
-        <h2 className="login-h2">Login</h2>
+      <h2 className="login-h2">Login</h2>
+      <div className="login-content">
         <img className="yarn-pic" src={yarnPic} alt="yarn" />
-      </div>  
-      <form onSubmit={handleFormSubmit}>
-        <label htmlFor="email">Email address:</label>
-        <input
-            className="form-field"
-            placeholder="youremail@test.com"
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleChange}
-        />
-        <label htmlFor="pwd">Password:</label>
-        <input
-            className="form-field"
-            placeholder="******"
-            name="password"
-            type="password"
-            id="pwd"
-            onChange={handleChange}
-        />
-        {error ? (
-          <div>
-            <p className="error-text">The provided credentials are incorrect</p>
+        <form onSubmit={handleFormSubmit}>
+          <label htmlFor="email">Email address:</label>
+          <input
+              className="form-field"
+              placeholder="youremail@test.com"
+              name="email"
+              type="email"
+              id="email"
+              onChange={handleChange}
+          />
+          <label htmlFor="pwd">Password:</label>
+          <input
+              className="form-field"
+              placeholder="******"
+              name="password"
+              type="password"
+              id="pwd"
+              onChange={handleChange}
+          />
+          {error ? (
+            <div>
+              <p className="error-text">The provided credentials are incorrect</p>
+            </div>
+          ) : null}
+          <div className="btn-container-center">
+            <button className="btn-primary" type="submit">Submit</button>
+            <div className="btn-back"><Link to="/signup">Go To Signup</Link></div>
           </div>
-        ) : null}
-        <div className="btn-container-center">
-          <button className="btn-primary" type="submit">Submit</button>
-          <div className="btn-back"><Link to="/signup">Go To Signup</Link></div>
-        </div>
-      </form>
+        </form>
+      </div>  
     </section>
   );
 }
