@@ -34,7 +34,7 @@ db.once('open', async () => {
         };
 
         const addCategoriesToUser = async () => {
-            const completeCatagoryData = await addListsToCategories(listArray);
+            const completeCatagoryData = addListsToCategories(listArray);
             await User.findByIdAndUpdate(
                 user[0]._id, { categories: completeCatagoryData },
                 {

@@ -28,7 +28,7 @@ export default function Home() {
     }
     
     if (data) {
-        console.log('DB data:', data);
+        // console.log('DB data:', data);
 
         return (
          <>

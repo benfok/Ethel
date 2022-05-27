@@ -79,7 +79,7 @@ a {
 .btn-list-action {
   padding: 10px;
   border-radius: 5px;
-  width: 60px;
+  width: 70px;
   background-color: var(--headerFont);
   border: solid 2px var(--headerBg);
   color: var(--primaryFont);

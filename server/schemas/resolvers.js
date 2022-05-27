@@ -66,12 +66,12 @@ const resolvers = {
     },
     addItem: async (parent, { listId, itemText }, context) => {
       if(context.user) {
-        const item = await List.findOneAndUpdate(
+        const list = await List.findOneAndUpdate(
           { _id: listId },
           { $push: { items: { itemText: itemText } } },
           { new: true }
         )
-        return item
+        return list
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -87,17 +87,13 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     toggleItem: async (parent, { listId, itemId, checked }, context) => {
+      console.log(listId, itemId, checked)
       if(context.user) {
-        const item = await List.findOneAndUpdate(
-          { _id: listId },
-          { $set: { 
-              items: { 
-                _id: itemId,
-                completed: checked
-               } } },
+        List.findOneAndUpdate(
+          { "_id": listId, "items._id": itemId },
+          { $set: { "items.$.completed": checked }},
           { new: true }
         )
-        return item;
       }
       throw new AuthenticationError('You need to be logged in!');
     },

@@ -1,27 +1,41 @@
 import React, { useEffect, useState } from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaDatabase, FaTrashAlt } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import '../styles/listDetail.css';
 import ListActions from './ListActions';
 import Auth from '../utils/auth';
-
-import { useMutation } from '@apollo/client';
+import { useMutation, useLazyQuery } from '@apollo/client';
 
 import { ADD_ITEM, REMOVE_ITEM, TOGGLE_ITEM } from '../utils/mutations';
+import { QUERY_LIST } from '../utils/queries';
 
-const ListDetail = ({listData}) => {
+const ListDetail = ({listId}) => {
 
-    console.log('auth', Auth, Auth.loggedIn())
-    const [ activeListData, setActiveListData ] = useState(listData);
-    const [ activeListItems, setActiveListItems ] = useState(listData.items);
+    const [ activeItems, setActiveItems ] = useState();
+    const [ activeList, setActiveList ] = useState();
 
-    console.log('state', activeListData);
+    // console.log('state', activeListData);
 
+    const [getListItems, { loading, data }] = useLazyQuery(QUERY_LIST, {fetchPolicy: 'network-only'}); 
+
+    useEffect(() => {
+        getListItems({
+            variables: {
+                listId
+            }
+        })
+        .then((response) => {
+            console.log('RE-RENDERED')
+            setActiveList(response)
+            const items = response.data.list.items;
+            setActiveItems(items)
+        });
+    }, [listId, getListItems]);
 
     // add function to create state object upon opening list
 
         // remove an item
-    const [removeItem, { error }] = useMutation(REMOVE_ITEM);
+    const [removeItem] = useMutation(REMOVE_ITEM);
 
         const handleRemoveItemDB = async (listId, itemId) => {     
             const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -43,23 +57,52 @@ const ListDetail = ({listData}) => {
         // render the item locally
         const handleRemoveItem = async (event) => {
             event.preventDefault();
-            console.log(activeListItems);
-            let itemToRemove = event.currentTarget.dataset.id
-            let newState = activeListItems.filter((item) => {
+            const itemToRemove = event.currentTarget.dataset.id;
+            const newItemsArray = activeItems.filter((item) => {
                 return item._id !== itemToRemove
-            })
-            await setActiveListItems(newState)
-            await handleRemoveItemDB(listData._id, itemToRemove) 
-            console.log(activeListItems);
+            })        
+            setActiveItems(newItemsArray);
+            await handleRemoveItemDB(listId, itemToRemove);
         };
 
     // toggle completed status of an item
-    // const [toggleItem] = useMutation(TOGGLE_ITEM);
+    const [toggleItem] = useMutation(TOGGLE_ITEM);
 
         // add function to handle clicking to set checked state
-    const toggleChecked = async (itemId, listId) => {
-        let checked = document.getElementById(itemId).checked;
-        checked ? checked = false : checked = true;
+    const toggleChecked = async (event) => {
+        event.stopPropagation();
+        
+        // update state with completed status
+        const itemId = event.currentTarget.dataset.id
+        const newState = await activeItems.map(item => (item._id === itemId ? {...item, completed: !item.completed} : item ));
+        setActiveItems(newState)
+
+        try {
+            const { data } = await toggleItem({
+                variables: {
+                    listId: listId,
+                    itemId: itemId,
+                    checked: false
+                }
+            }) 
+        } catch (err) {
+            console.error(err);
+            }
+        };
+
+
+
+
+        // const state = activeItems;
+        // const item = activeItems.find(item => item._id === itemId)
+        // item.completed = !item.completed
+        // console.log(state)
+       
+        
+        
+        // let checked = document.getElementById(itemId).checked;
+        // checked ? checked = false : checked = true;
+        // console.log(checked)
         
         // try {
         //     const { data } = await toggleItem({
@@ -74,7 +117,6 @@ const ListDetail = ({listData}) => {
         // console.error(err);
         // }
 
-    }
     
     // add the item to the DB
     const [addItem] = useMutation(ADD_ITEM);
@@ -89,8 +131,8 @@ const ListDetail = ({listData}) => {
                 listId,
                 itemText,
             }
-        });
-        console.log('Item added:', data);
+        })
+        return data.addItem.items[data.addItem.items.length - 1];
         } catch (err) {
         console.error(err);
         }
@@ -100,32 +142,22 @@ const ListDetail = ({listData}) => {
     const handleAddItem = async (event) => {
         event.preventDefault();
         let addedItem = event.target.children[0].value
-        await setActiveListItems([
-            ...activeListItems,
+        // first add Item to DB so I get ID back
+        const data = await handleAddItemDB(listId, addedItem) 
+        // set to state to render to page
+        setActiveItems([
+            ...activeItems, 
             {
-                itemText: addedItem,
-                completed: false,
-                _id: `item-${activeListItems.length + 1}`
+                itemText: data.itemText,
+                completed: data.completed,
+                _id: data._id
             }
         ])
-        await handleAddItemDB(listData._id, addedItem) 
         document.getElementById('add-item-form').reset(); // reset the text field after adding item
     };
     
 
-    const itemData = 
-        activeListItems.map((item, index) => (
-            <div className="item" key={item._id}>
-                <label className="item-label" htmlFor={item._id} onClick={() => toggleChecked(item._id, listData._id)}>
-                    {item.itemText}
-                    <input type="checkbox" id={item._id} data-index={index} defaultChecked={item.completed}/>
-                    <span className='custom-checkbox'></span>
-                </label>
-                <div className="item-delete-icon" data-id={item._id} onClick={handleRemoveItem}>
-                    <FaTrashAlt />
-                </div>
-            </div>
-        ));
+
 
     const addItemForm =
         <form className="new-item-container" onSubmit={handleAddItem}  id="add-item-form">
@@ -139,20 +171,48 @@ const ListDetail = ({listData}) => {
         </p>;
 
 
-    return (
-        <div className='list-card'>
-            <div className='item-container'>
-                {itemData}
-                {addItemForm}
+    if(loading) {
+        return (
+            <div className='list-card'>
+                <div className='item-container'>
+                    <h4>Loading list...</h4>
+                </div>
             </div>
-            <div className='list-shared-container'>
-                {listSharedWith}
+        )
+    }
+
+    if(data) {
+        const itemData = 
+        data.list.items.map((item, index) => (
+            <div className="item" key={item._id}>
+                <label className="item-label" htmlFor={item._id} >
+                    <input type="checkbox" id={item._id} data-index={index} defaultChecked={item.completed}/>
+                    <span className='custom-checkbox'  onClick={toggleChecked} data-id={item._id} ></span>
+                </label>
+                <p className="item-text">
+                    {item.itemText}
+                </p>
+                <div className="item-delete-icon" data-id={item._id} onClick={handleRemoveItem}>
+                    <FaTrashAlt />
+                </div>
             </div>
-            <div className='list-action-container'>
-                <ListActions />
+        ));
+
+        return (
+            <div className='list-card'>
+                <div className='item-container'>
+                    {itemData}
+                    {addItemForm}
+                </div>
+                <div className='list-shared-container'>
+                    {listSharedWith}
+                </div>
+                <div className='list-action-container'>
+                    <ListActions />
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default ListDetail;

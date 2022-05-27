@@ -7,7 +7,7 @@ import { IconContext } from 'react-icons/lib';
 // receives category data and the index of a nested list array - if it exists
 // in the case of categories, the default category option and the all categories options within the drop down will not correspond with index values within the categories.lists array and so must be handled conditionally
 const List = ({listData, listIndex, color}) => {
-  console.log('list-data', listData)
+  // console.log('list-data', listData)
   const [ activeList, setActiveList ] = useState({});
 
   const handleActiveListChange = (event, key) => {
@@ -27,7 +27,7 @@ const List = ({listData, listIndex, color}) => {
             {activeList === listData._id ? <IoIosArrowDropdownCircle /> : <IoIosArrowDropright />}
           </IconContext.Provider>
         </div>
-      {activeList === listData._id && <ListDetail listData={listData} />}
+      {activeList === listData._id && <ListDetail listId={listData._id} />}
       </>
 
   )
