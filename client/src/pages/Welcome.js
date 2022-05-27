@@ -3,7 +3,7 @@ import '../styles/layout.css';
 import '../styles/welcome.css';
 import useMedia from '../hooks/useMedia'
 import { Link, Navigate } from "react-router-dom";
-import ethylPic from "../assets/ethyltall.jpg";
+import ethylPic from "../assets/ethyl-radiant.jpg";
 
 import Auth from '../utils/auth';
 
@@ -19,13 +19,13 @@ export default function Welcome() {
   return (
     <section className="main-content">
       <div id="greeting">
-        <h2>Hello there, I'm Ethyl!</h2>
-        <img src= {ethylPic} alt="Ethyl" />
+        <h2 className="welcome-h2">Hello there, I'm Ethyl!</h2>
+        <img className="ethyl-pic" src= {ethylPic} alt="Ethyl" />
       </div>
-        <p>
+        <p className="welcome-p">
           I used to always lose track of my things, but then I learned to organize everything by keeping lists. Now I'm the most efficient granny around, and I can help you whippersnappers do the same! 
         </p>
-        <p>
+        <p className="welcome-p">
           Sign in to create your own lists and share them with your friends. Or if this is your first time here, click on the Demo button to see how I keep track of all my things. And can I interest you in a hard butterscotch candy?
         </p>
         <div className="btn-container-center">
