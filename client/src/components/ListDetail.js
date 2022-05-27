@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { FaDatabase, FaTrashAlt } from 'react-icons/fa';
-import { IconContext } from 'react-icons/lib';
 import '../styles/listDetail.css';
 import ListActions from './ListActions';
 import Auth from '../utils/auth';
@@ -152,7 +151,7 @@ const ListDetail = ({listId}) => {
     }
 
     if(data) {
-        activeList.data.list.owner === Auth.getProfile().data._id ? editable = true : editable = false;  // sets the editable flag
+        data.list.owner === Auth.getProfile().data._id ? editable = true : editable = false;  // sets the editable flag
         const itemData = 
         data.list.items.map((item, index) => (
             <div className="item" key={item._id}>

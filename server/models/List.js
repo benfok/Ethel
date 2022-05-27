@@ -36,8 +36,10 @@ const itemSchema = new Schema({
     sharedWith: [
         // creates an array of objects. This field is the Type of ObjectId (the Mongo specific id). The ref property connects this to the user model.
         {
-          type: Schema.Types.ObjectId,
-          ref: 'User'
+          userId: Schema.Types.ObjectId, 
+          firstName: String, 
+          lastName: String,
+          email: String
         } 
     ],
     createdAt: {

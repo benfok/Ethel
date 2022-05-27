@@ -24,7 +24,7 @@ const resolvers = {
       const categories = [{
         categoryName: "Uncategorized", 
         color: "#8D8896",
-        isEditable: false,
+        userEditable: false,
         lists: []
       }];
       const user = await User.create({ firstName, lastName, email, password, categories });
@@ -33,20 +33,15 @@ const resolvers = {
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-
       if (!user) {
         throw new AuthenticationError('No user found with this email address');
       }
-
       //isCorrectPassword is set on the User model
       const correctPw = await user.isCorrectPassword(password);
-
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
       }
-
       const token = signToken(user);
-
       return { token, user };
     },
     addCategory: async (parent, { categoryName, color }, context) => {
@@ -94,6 +89,84 @@ const resolvers = {
           { new: true }
         )
         return list;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    addList: async (parent, { listName, owner, categoryId }, context) => {
+      if(context.user) {
+        
+        const list = await List.create(
+            { 
+              listName,
+              owner,
+              items: [],
+              sharedWith: [],
+            }
+        );
+
+        const addListToUser = async (list) => {
+          await User.findOneAndUpdate(
+            { "_id": owner, "categories._id" : categoryId },
+            { $push: { "categories.$.lists" :  list._id }},
+            { new: true }
+          )
+        }
+
+        await addListToUser(list)
+
+        return list
+     }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removeList: async (parent, { listId, categoryId }, context) => {
+      if(context.user) {
+        const list = await List.findOneAndDelete({ _id: listId })
+
+        const removeListFromUserCategory = async (list) => {
+          await User.findOneAndUpdate(
+            { "_id": context.user._id, "categories._id" : categoryId },
+            { $pull: { "categories.$.lists" :  listId }},
+            { new: true }
+          )
+        }
+
+        await removeListFromUserCategory(list)
+        return list
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    shareList: async (parent, { listId, sharedWithId }, context) => {
+      if(context.user) {
+        // first collect relevant data about the shared user
+        const sharedWith = await User.findById(sharedWithId).select("firstName lastName email")
+
+        //update the list document and set it as a shared list
+        const list = await List.findOneAndUpdate(
+          { _id: listId },
+          { 
+            $set: { sharedList: true },
+            $push: { sharedWith: {
+              _id : sharedWithId,
+              firstName: sharedWith.firstName,
+              lastName: sharedWith.lastName,
+              email: sharedWith.email
+            }}
+          },
+          { new: true }
+        )
+
+        // add the list to the shared Users "uncategorized" category. This is always index 0 of the categories array
+        const addListToUser = async () => {
+          await User.findOneAndUpdate(
+            { "_id": sharedWithId },
+            { $push: { "categories.0.lists" :  listId }},
+            { new: true }
+          )
+        }
+
+        await addListToUser();
+
+        return list
       }
       throw new AuthenticationError('You need to be logged in!');
     },
