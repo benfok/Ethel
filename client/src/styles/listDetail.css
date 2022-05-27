@@ -74,6 +74,7 @@
 .list-shared-p {
     font-size: 80%;
     color: var(--secondaryFont);
+    text-align: center;
 }
 
 /* custom checkbox */

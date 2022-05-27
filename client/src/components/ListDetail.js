@@ -14,7 +14,8 @@ const ListDetail = ({listId}) => {
     const [ activeItems, setActiveItems ] = useState();
     const [ activeList, setActiveList ] = useState();
 
-    // console.log('state', activeListData);
+    // sets whether the list itself is editable by the current user. If not, some list actions will not be visible
+    let editable;
 
     const [getListItems, { loading, data }] = useLazyQuery(QUERY_LIST, {fetchPolicy: 'network-only'}); 
 
@@ -25,7 +26,6 @@ const ListDetail = ({listId}) => {
             }
         })
         .then((response) => {
-            console.log('RE-RENDERED')
             setActiveList(response)
             const items = response.data.list.items;
             setActiveItems(items)
@@ -90,34 +90,6 @@ const ListDetail = ({listId}) => {
             console.error(err);
             }
         };
-
-
-
-
-        // const state = activeItems;
-        // const item = activeItems.find(item => item._id === itemId)
-        // item.completed = !item.completed
-        // console.log(state)
-       
-        
-        
-        // let checked = document.getElementById(itemId).checked;
-        // checked ? checked = false : checked = true;
-        // console.log(checked)
-        
-        // try {
-        //     const { data } = await toggleItem({
-        //         variables: {
-        //             listId,
-        //             itemId,
-        //             checked
-        //         }
-        //     });
-        //     console.log('Item toggled', data);
-        // } catch (err) {
-        // console.error(err);
-        // }
-
     
     // add the item to the DB
     const [addItem] = useMutation(ADD_ITEM);
@@ -157,9 +129,6 @@ const ListDetail = ({listId}) => {
         document.getElementById('add-item-form').reset(); // reset the text field after adding item
     };
     
-
-
-
     const addItemForm =
         <form className="new-item-container" onSubmit={handleAddItem}  id="add-item-form">
             <input type="text" className="new-item" maxLength="40" placeholder="Add an Item"></input>
@@ -183,6 +152,7 @@ const ListDetail = ({listId}) => {
     }
 
     if(data) {
+        activeList.data.list.owner === Auth.getProfile().data._id ? editable = true : editable = false;  // sets the editable flag
         const itemData = 
         data.list.items.map((item, index) => (
             <div className="item" key={item._id}>
@@ -209,7 +179,7 @@ const ListDetail = ({listId}) => {
                     {listSharedWith}
                 </div>
                 <div className='list-action-container'>
-                    <ListActions />
+                    <ListActions editable={editable} />
                 </div>
             </div>
         )
