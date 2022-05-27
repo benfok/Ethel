@@ -87,13 +87,13 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     toggleItem: async (parent, { listId, itemId, checked }, context) => {
-      console.log(listId, itemId, checked)
       if(context.user) {
-        List.findOneAndUpdate(
+       const list = List.findOneAndUpdate(
           { "_id": listId, "items._id": itemId },
-          { $set: { "items.$.completed": checked }},
+          { $set: { "items.$.completed" : checked }},
           { new: true }
         )
+        return list;
       }
       throw new AuthenticationError('You need to be logged in!');
     },

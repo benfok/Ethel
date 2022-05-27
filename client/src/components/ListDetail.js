@@ -74,7 +74,8 @@ const ListDetail = ({listId}) => {
         
         // update state with completed status
         const itemId = event.currentTarget.dataset.id
-        const newState = await activeItems.map(item => (item._id === itemId ? {...item, completed: !item.completed} : item ));
+        const checked = !document.getElementById(itemId).checked;
+        const newState = await activeItems.map(item => (item._id === itemId ? {...item, completed: checked} : item ));
         setActiveItems(newState)
 
         try {
@@ -82,7 +83,7 @@ const ListDetail = ({listId}) => {
                 variables: {
                     listId: listId,
                     itemId: itemId,
-                    checked: false
+                    checked: checked
                 }
             }) 
         } catch (err) {
