@@ -77,3 +77,46 @@ mutation toggleItem($listId: ID!, $itemId: ID!, $checked: Boolean!) {
   }
 }
 `;
+
+export const ADD_LIST = gql`
+mutation addList($listName: String!, $owner: ID!, $categoryId: ID!) {
+  addList(listName: $listName, owner: $owner, categoryId: $categoryId) {
+    _id
+    listName
+    owner
+    items {
+      _id
+    }
+    sharedList
+    sharedWith {
+      _id
+    }
+    createdAt
+  }
+}
+`;
+
+export const REMOVE_LIST = gql`
+mutation removeList($listId: ID!, $categoryId: ID!) {
+  removeList(listId: $listId, categoryId: $categoryId) {
+    _id
+  }
+}
+`;
+
+export const SHARE_LIST = gql`
+mutation shareList($listId: ID!, $sharedWithId: ID!) {
+  shareList(listId: $listId, sharedWithId: $sharedWithId) {
+    _id
+    listName
+    sharedList
+    owner
+    sharedWith {
+      _id
+      firstName
+      lastName
+      email
+    }
+  }
+}
+`;

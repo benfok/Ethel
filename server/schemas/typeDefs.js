@@ -54,8 +54,9 @@ const typeDefs = gql`
     removeItem(listId: ID!, itemId: ID!): List
     toggleItem(listId: ID!, itemId: ID!, checked: Boolean!): List
     addCategory(categoryName: String!, color: String!): User
-    addList(listName: String!, owner: ID!): List
-    removeList(listId: ID!): List
+    addList(listName: String!, owner: ID!, categoryId: ID!): List
+    removeList(listId: ID!, categoryId: ID!): List
+    shareList(listId: ID!, sharedWithId: ID!): List
 
   }
 `;
