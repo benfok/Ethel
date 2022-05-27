@@ -36,7 +36,19 @@ const authLink = setContext((_, { headers }) => {
 const client = new ApolloClient({
   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      List: {
+        fields: {
+          items: {
+            merge(existing, incoming){
+              return incoming
+            }
+          }
+        }
+      }
+    }
+  }),
 });
 
 // make the ApolloProvider the parent for all other components and give it access to the ApolloClient. This ensures all components can get to the data from GraphQL

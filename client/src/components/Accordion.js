@@ -5,7 +5,7 @@ import '../styles/accordion.css';
 // receives category data and the index of a nested list array - if it exists
 // in the case of categories, the default category option and the all categories options within the drop down will not correspond with index values within the categories.lists array and so must be handled conditionally
 const Accordion = ({categoryData, listIndex}) => {
-  console.log('cat-data', categoryData)
+//   console.log('cat-data', categoryData)
 
    let listData; 
 

@@ -4,7 +4,7 @@ import { FaSquare } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 
 const Category = ({ category, index }) => {
-console.log(category)
+// console.log(category)
     return (
           <div className="categories" data-index={index}>
             <span>{category.categoryName}</span>
