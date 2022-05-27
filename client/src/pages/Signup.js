@@ -34,8 +34,10 @@ function Signup(props) {
 
   return (
     <section className="main-content">
-      <h2>Signup</h2>
-      <img src={yarnPic} alt="yarn" />
+      <div className="login-header">
+        <h2 className="login-h2">Signup</h2>
+        <img className="yarn-pic" src={yarnPic} alt="yarn" />
+      </div>
       <form onSubmit={handleFormSubmit}>
           <label htmlFor="firstName">First Name:</label>
           <input

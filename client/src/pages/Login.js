@@ -33,9 +33,11 @@ function Login(props) {
   };
 
   return (
-    <section className="main-content">   
-      <h2>Login</h2>
-      <img src={yarnPic} alt="yarn" />
+    <section className="main-content"> 
+      <div className="login-header">
+        <h2 className="login-h2">Login</h2>
+        <img className="yarn-pic" src={yarnPic} alt="yarn" />
+      </div>  
       <form onSubmit={handleFormSubmit}>
         <label htmlFor="email">Email address:</label>
         <input

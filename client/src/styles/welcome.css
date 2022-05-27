@@ -3,18 +3,30 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 75%;
     margin-top: 80px;
 }
 
-h2 {
-    margin-top: 150px;
+.welcome-h2 {
+    /* margin-top: 30px; */
     font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-p {
-    margin-bottom: 5%;
-    margin-top: 1%;
+.welcome-p {
+    /* margin-bottom: 5%;
+    margin-top: 1%; */
+    margin: 1% 2% 4% 2%;
     text-align: center;
+}
+
+.ethyl-pic {
+    border: 5px solid var(--headerBg);
+    border-radius: 25%;
+    height: 100%;
+    max-height: 40vh;
 }
 
 @media (orientation: landscape) {
@@ -24,11 +36,16 @@ p {
     
     #greeting {
         flex-direction: row;
-        margin-top: 7%;
+        justify-content: space-evenly;
+        margin-top: 50px;
     }
 
-    h2 {
+    .welcome-h2 {
         font-size: 3em;
+    }
+
+    .welcome-p {
+        margin: 1%;
     }
 
     .btn-container-center {
