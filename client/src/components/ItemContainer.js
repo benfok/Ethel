@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { FaDatabase, FaTrashAlt } from 'react-icons/fa';
-import '../styles/listDetail.css';
-import ListActions from './ListActions';
+import { FaTrashAlt } from 'react-icons/fa';
+import '../styles/listCard.css';
 import Auth from '../utils/auth';
 import { useMutation, useLazyQuery } from '@apollo/client';
 
 import { ADD_ITEM, REMOVE_ITEM, TOGGLE_ITEM } from '../utils/mutations';
 import { QUERY_LIST } from '../utils/queries';
 
-const ListDetail = ({listId}) => {
+const ItemContainer = ({listId}) => {
 
     const [ activeItems, setActiveItems ] = useState();
     const [ activeList, setActiveList ] = useState();
-
-    // sets whether the list itself is editable by the current user. If not, some list actions will not be visible
-    let editable;
 
     const [getListItems, { loading, data }] = useLazyQuery(QUERY_LIST, {fetchPolicy: 'network-only'}); 
 
@@ -25,6 +21,7 @@ const ListDetail = ({listId}) => {
             }
         })
         .then((response) => {
+            console.log('QUERY_LIST rendered')
             setActiveList(response)
             const items = response.data.list.items;
             setActiveItems(items)
@@ -53,7 +50,7 @@ const ListDetail = ({listId}) => {
             }
         };
     
-        // render the item locally
+        // remove the item locally
         const handleRemoveItem = async (event) => {
             event.preventDefault();
             const itemToRemove = event.currentTarget.dataset.id;
@@ -130,15 +127,8 @@ const ListDetail = ({listId}) => {
     
     const addItemForm =
         <form className="new-item-container" onSubmit={handleAddItem}  id="add-item-form">
-            <input type="text" className="new-item" maxLength="40" placeholder="Add an Item"></input>
+            <input type="text" className="new-item" maxLength="40" minLength="1" placeholder="Add an Item"></input>
         </form>;
-
-    const listSharedWith =
-        <p className="list-shared-p">
-            List shared with:<br/>
-            Place Holder | Place Holder | Place Holder
-        </p>;
-
 
     if(loading) {
         return (
@@ -151,7 +141,6 @@ const ListDetail = ({listId}) => {
     }
 
     if(data) {
-        data.list.owner === Auth.getProfile().data._id ? editable = true : editable = false;  // sets the editable flag
         const itemData = 
         data.list.items.map((item, index) => (
             <div className="item" key={item._id}>
@@ -169,20 +158,12 @@ const ListDetail = ({listId}) => {
         ));
 
         return (
-            <div className='list-card'>
-                <div className='item-container'>
-                    {itemData}
-                    {addItemForm}
-                </div>
-                <div className='list-shared-container'>
-                    {listSharedWith}
-                </div>
-                <div className='list-action-container'>
-                    <ListActions editable={editable} />
-                </div>
+            <div className='item-container'>
+                {itemData}
+                {addItemForm}
             </div>
         )
     }
 }
 
-export default ListDetail;
+export default ItemContainer;

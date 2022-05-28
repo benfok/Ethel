@@ -48,6 +48,7 @@ export const QUERY_CURRENT_USER = gql`
                 _id
                 listName
                 sharedList
+                owner
             }
         }
         }
@@ -88,4 +89,15 @@ export const QUERY_LIST = gql`
         }
         }
     }
+`;
+
+export const QUERY_ALL_USERS = gql `
+query users {
+    users {
+      _id
+      firstName
+      lastName
+      email
+    }
+  }
 `;

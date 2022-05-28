@@ -18,6 +18,7 @@ const Accordion = ({categoryData, listIndex}) => {
                 listData = {list}
                 listIndex = {index}
                 color = {category.color}
+                categoryId={category._id}
                 key = {list._id}
             />
           ))
@@ -30,6 +31,7 @@ const Accordion = ({categoryData, listIndex}) => {
             listData = {list}
             listIndex = {index}
             color = {categoryData[listIndex].color}
+            categoryId={categoryData[listIndex]._id}
             key = {list._id}
           />
         ))
