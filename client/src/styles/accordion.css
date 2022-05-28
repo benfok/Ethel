@@ -21,6 +21,7 @@
 
 .categories-input {
     margin-right: 10px;
+    padding: 1%;
 }
 
 .categories {
@@ -36,7 +37,7 @@
     margin-bottom: 10px;
 }
 
-.category-name {
+.category-length {
     margin-right: 10px;
 }
 
@@ -66,7 +67,13 @@
     color: var(--primaryFont);
 }
 
+ .categories-input, .categories-select, .add-btn, .form-field {
+     border-radius: 10px;
+ }
+
 
 @media (orientation: landscape) {
-    
+    .categories {
+        width: 50%;
+    }
 }

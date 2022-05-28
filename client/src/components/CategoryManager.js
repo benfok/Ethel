@@ -35,7 +35,7 @@ const CategoryManager = ( { categoryData }) => {
         <div className="category-page">
             <form className="categories-form" onSubmit={handleCreateCategory}>
                 <input className="categories-input" onChange={(event) => setCategoryName(event.target.value)} />
-                <select onChange={(event) => setColor(event.target.value)}>
+                <select className="categories-select" onChange={(event) => setColor(event.target.value)}>
                     {categoryColor.map((value, index) => (
                          <option id={value} key={`color${index}`} value={value} style={{backgroundColor: `${value}`, fontSize: "30px"}}>{value}</option>
                     ))}
