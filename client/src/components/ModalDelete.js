@@ -4,17 +4,23 @@ import { useMutation } from '@apollo/client';
 import { REMOVE_LIST } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-const ModalDelete = ({toggle, listId, categoryId}) => {
+const ModalDelete = ({toggle, listId, categoryId, categoryDataState, currentCatIndex, subComponentReRender}) => {
 
     const [loading, setLoading] = useState(false);
     const [removeList] = useMutation(REMOVE_LIST);
- 
-    const handleRemoveListDB = async (listId, categoryId) => {
+     
+    const handleRemoveList = async (listId, categoryId) => {
 
-        console.log(listId, categoryId)
         const token = Auth.loggedIn() ? Auth.getToken() : null;
         if (!token) { return false; }
 
+        let newCatState = categoryDataState
+        const newListState = await newCatState[currentCatIndex].lists.filter((list) => list._id !== listId);
+        console.log(newListState)
+        newCatState[currentCatIndex].lists = newListState
+        console.log(newCatState);
+        subComponentReRender(currentCatIndex);
+       
         const { data, loading, error } = await removeList({
             variables: {
                 listId,
@@ -38,7 +44,7 @@ const ModalDelete = ({toggle, listId, categoryId}) => {
                     <h4>Delete List</h4>
                     {!loading && <p>Deleting a list will remove all items and cannot be undone. Are you sure?</p>}
                     {loading && <p>Deleting, please wait...</p>}
-                    <button className="btn-list-action" disabled={loading} onClick={() => {handleRemoveListDB(listId, categoryId)}}>Confirm</button>
+                    <button className="btn-list-action" disabled={loading} onClick={() => {handleRemoveList(listId, categoryId)}}>Confirm</button>
                     <button className="btn-list-action" disabled={loading} onClick={toggle}>Cancel</button>
                 </section>
             </div>

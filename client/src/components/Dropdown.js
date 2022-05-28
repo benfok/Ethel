@@ -7,7 +7,7 @@ const Dropdown = ({ category, options, onChange }) => {
 
   return (
       <div className="dropdown-menu">
-        <select value={category} onChange={onChange} className="form-field">
+        <select value={category} onChange={onChange} className="form-field" id="category-select">
           <option key="0" value="default" hidden>Select a Category</option>
           {options.map((option, index) => (
             <option data-index={index} data-color={option.color} id={option._id} key={option._id} value={option.categoryName}>{option.categoryName}</option>
