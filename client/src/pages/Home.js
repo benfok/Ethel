@@ -10,7 +10,10 @@ export default function Home() {
   return (
     <section className="main-content">
         {Auth.loggedIn() ? (
-            <UserHome />
+            <>
+                <h2 className="home-h2">My Lists</h2>
+                <UserHome />
+            </>
         ) : (
             <>
                 <h2>You must be logged in to view this page</h2>
