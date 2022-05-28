@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import '../styles/listCard.css';
 import Auth from '../utils/auth';
@@ -7,26 +7,24 @@ import { useMutation, useLazyQuery } from '@apollo/client';
 import { ADD_ITEM, REMOVE_ITEM, TOGGLE_ITEM } from '../utils/mutations';
 import { QUERY_LIST } from '../utils/queries';
 
-const ItemContainer = ({listId}) => {
+const ItemContainer = ({listId, renderItems, listData, itemData}) => {
 
-    const [ activeItems, setActiveItems ] = useState();
-    const [ activeList, setActiveList ] = useState();
+    const [ activeItems, setActiveItems ] = useState(itemData);
+    const [ activeList, setActiveList ] = useState(listData);
 
-    const [getListItems, { loading, data }] = useLazyQuery(QUERY_LIST, {fetchPolicy: 'network-only'}); 
+    // const [getListItems, { loading, data }] = useLazyQuery(QUERY_LIST, {fetchPolicy: 'network-only'}); 
+    // const data = useRef();
 
-    useEffect(() => {
-        getListItems({
-            variables: {
-                listId
-            }
-        })
-        .then((response) => {
-            console.log('QUERY_LIST rendered')
-            setActiveList(response)
-            const items = response.data.list.items;
-            setActiveItems(items)
-        });
-    }, [listId, getListItems]);
+    // useEffect(() => {
+    //     renderItems()
+    //     .then((response) => {
+    //         console.log('QUERY_LIST rendered')
+    //         setActiveList(response)
+    //         data.current = response;
+    //         const items = response.data.list.items;
+    //         setActiveItems(items)
+    //     });
+    // }, []);
 
     // add function to create state object upon opening list
 
@@ -130,19 +128,19 @@ const ItemContainer = ({listId}) => {
             <input type="text" className="new-item" maxLength="40" minLength="1" placeholder="Add an Item"></input>
         </form>;
 
-    if(loading) {
+    if(!itemData) {
         return (
             <div className='list-card'>
                 <div className='item-container'>
-                    <h4>Loading list...</h4>
+                    <h5>Loading list...</h5>
                 </div>
             </div>
         )
     }
 
-    if(data) {
-        const itemData = 
-        data.list.items.map((item, index) => (
+    if(itemData) {
+        const items = 
+        itemData.map((item, index) => (
             <div className="item" key={item._id}>
                 <label className="item-label" htmlFor={item._id} >
                     <input type="checkbox" id={item._id} data-index={index} defaultChecked={item.completed}/>
@@ -159,7 +157,7 @@ const ItemContainer = ({listId}) => {
 
         return (
             <div className='item-container'>
-                {itemData}
+                {items}
                 {addItemForm}
             </div>
         )

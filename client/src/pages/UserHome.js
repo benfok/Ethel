@@ -63,7 +63,7 @@ export default function Home() {
             {!optionIndex && <CategoryManager categoryData={data.currentUser.categories} />}
             {optionIndex && <Accordion 
                 categoryDataState={categoryData} 
-                subComponentReRender={categoryReRender}
+                categoryReRender={categoryReRender}
                 currentCatIndex={optionIndex}
             />}
         </>
