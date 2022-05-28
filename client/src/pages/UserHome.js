@@ -34,16 +34,20 @@ export default function Home() {
         return (
          <>
             <h2 className="home-h2">My Lists</h2>
-            <Dropdown
-                value={category}
-                onChange={handleCategoryChange}
-                options={data.currentUser.categories}
-            />
-            {!optionIndex && <CategoryManager categoryData={data.currentUser.categories} />}
-            {optionIndex && <Accordion 
-                categoryData={data.currentUser.categories} 
-                listIndex={optionIndex}
-            />}
+            <div className="choose-category-field">
+                <div className="category-dropdown-container">
+                    <Dropdown
+                        value={category}
+                        onChange={handleCategoryChange}
+                        options={data.currentUser.categories}
+                    />
+                </div>
+            </div>
+                {!optionIndex && <CategoryManager categoryData={data.currentUser.categories} />}
+                {optionIndex && <Accordion 
+                    categoryData={data.currentUser.categories} 
+                    listIndex={optionIndex}
+                />}
         </>
         );
     }

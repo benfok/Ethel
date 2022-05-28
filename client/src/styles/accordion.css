@@ -76,7 +76,7 @@
     color: var(--primaryFont);
 }
 
- .categories-input, .categories-select, .add-btn, .form-field, .list {
+ .categories-input, .categories-select, .add-btn, .form-field, .list, .list-card, .new-item {
      border-radius: 10px;
  }
 
@@ -95,15 +95,20 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        width: 80%;
+        width: 75%;
     }
 
     .ethyl-pic {
         display: flex;
+        max-width: 35%;
     }
 
     .list {
-        width: 70%;
+        width: 80%;
+    }
+
+    .categories {
+        width: 50%;
     }
 
 }
