@@ -32,7 +32,7 @@ export default function Home() {
         setCategoryData(data.currentUser.categories)
     };
 
-    const subComponentReRender = async (currentCatIndex) => {
+    const categoryReRender = async (currentCatIndex) => {
 
         await getCurrentUser()
         .then(() => {
@@ -51,13 +51,11 @@ export default function Home() {
 
         return (
          <>
-            {/* <h2 className="home-h2">My Lists</h2> */}
          <div className="choose-category-field">
           <div className="category-dropdown-container">
             <Dropdown
                 value={category}
                 onChange={event => handleCategoryChange(event.target.value, event.target.selectedOptions[0].dataset.color, event.target.selectedOptions[0].dataset.index)}
-                // onChange={event => console.log(event)}
                 options={data.currentUser.categories}
             />
           </div>
@@ -65,7 +63,7 @@ export default function Home() {
             {!optionIndex && <CategoryManager categoryData={data.currentUser.categories} />}
             {optionIndex && <Accordion 
                 categoryDataState={categoryData} 
-                subComponentReRender={subComponentReRender}
+                subComponentReRender={categoryReRender}
                 currentCatIndex={optionIndex}
             />}
         </>

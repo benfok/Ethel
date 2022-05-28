@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 
 // receives category data and the index of a nested list array - if it exists
 // in the case of categories, the default category option and the all categories options within the drop down will not correspond with index values within the categories.lists array and so must be handled conditionally
-const List = ({listData, listIndex, color, categoryId, categoryDataState, currentCatIndex, subComponentReRender}) => {
+const List = ({listData, listIndex, color, categoryId, categoryDataState, currentCatIndex, categoryReRender}) => {
   // console.log('list-data', listData)
   const [ activeList, setActiveList ] = useState({});
 
@@ -26,7 +26,7 @@ const List = ({listData, listIndex, color, categoryId, categoryDataState, curren
 
   return (
 
-      <>
+      <div>
         <div className="list" data-index={listIndex} onClick={event => handleActiveListChange(event, listData._id)} style={{borderRight: `solid 15px ${color}` }}>
           <span>{listData.listName}</span>
           <IconContext.Provider value={{ className: "list-icon" }}>
@@ -39,8 +39,8 @@ const List = ({listData, listIndex, color, categoryId, categoryDataState, curren
         categoryId = {categoryId}
         currentCatIndex={currentCatIndex}
         categoryDataState={categoryDataState} 
-        subComponentReRender={subComponentReRender}  />}
-      </>
+        categoryReRender={categoryReRender}  />}
+      </div>
 
   )
 };
