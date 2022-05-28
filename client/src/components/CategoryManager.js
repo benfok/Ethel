@@ -32,12 +32,12 @@ const CategoryManager = ( { categoryData }) => {
 
 
     return (
-        <div>
+        <div className="category-page">
             <form onSubmit={handleCreateCategory}>
                 <input onChange={(event) => setCategoryName(event.target.value)} />
                 <select onChange={(event) => setColor(event.target.value)}>
                     {categoryColor.map((value, index) => (
-                         <option id={value} key={`color${index}`} value={value} style={{backgroundColor: `${value}`, fontSize: "30px"}}>   test</option>
+                         <option id={value} key={`color${index}`} value={value} style={{backgroundColor: `${value}`, fontSize: "30px"}}>{value}</option>
                     ))}
                 </select>
                 <button disabled={loading} type="submit">
@@ -45,7 +45,7 @@ const CategoryManager = ( { categoryData }) => {
                 </button>
                 {error && <p>{error.message}</p>}
             </form>
-            <h3>My Categories</h3>
+            <h3 className="home-h3">My Categories</h3>
             {categories}
         </div>
         
