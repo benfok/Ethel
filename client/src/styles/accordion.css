@@ -2,13 +2,31 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 90%;
+}
+
+.categories-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 85%;
+}
+
+.add-btn {
+    background-color: rgb(169, 63, 211);
+    color: white;
+    padding: 2%;
+    margin-left: 10px;
+}
+
+.categories-input {
+    margin-right: 10px;
 }
 
 .categories {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 90%;
+    width: 75%;
 }
 
 .categories-text {
@@ -48,3 +66,7 @@
     color: var(--primaryFont);
 }
 
+
+@media (orientation: landscape) {
+    
+}
