@@ -6,16 +6,24 @@ const resolvers = {
   Query: {
     currentUser: async (parent, args, context) => {
         if (context.user) {
-          return User.findOne({ _id: context.user._id }).populate({path: 'categories.lists', populate: 'items'});
+          return await User.findOne({ _id: context.user._id }).populate({path: 'categories.lists', populate: 'items'});
         }
         throw new AuthenticationError('You need to be logged in!');
     },
+
     list: async (parent, {listId}, context) => {
-      // if (context.user) {
-        return List.findById(listId).populate('items');
-      // }
-      // throw new AuthenticationError('You need to be logged in!');
-    }
+      if (context.user) {
+        return await List.findById(listId).populate('items');
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    users: async (parent, args, context) => {
+      if(context.user) {
+        return await User.find({}).select("firstName lastName email");
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 
   Mutation: {
@@ -31,6 +39,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
@@ -44,6 +53,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+
     addCategory: async (parent, { categoryName, color }, context) => {
       if(context.user) {
           const user = await User.findByIdAndUpdate(
@@ -59,6 +69,7 @@ const resolvers = {
         }
         throw new AuthenticationError('You need to be logged in to add a category');
     },
+
     addItem: async (parent, { listId, itemText }, context) => {
       if(context.user) {
         const list = await List.findOneAndUpdate(
@@ -70,6 +81,7 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+
     removeItem: async (parent, { listId, itemId }, context) => {
       if(context.user) {
         const list = await List.findOneAndUpdate(
@@ -81,6 +93,7 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+
     toggleItem: async (parent, { listId, itemId, checked }, context) => {
       if(context.user) {
        const list = List.findOneAndUpdate(
@@ -92,6 +105,7 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+
     addList: async (parent, { listName, owner, categoryId }, context) => {
       if(context.user) {
         
@@ -118,6 +132,7 @@ const resolvers = {
      }
       throw new AuthenticationError('You need to be logged in!');
     },
+
     removeList: async (parent, { listId, categoryId }, context) => {
       if(context.user) {
         const list = await List.findOneAndDelete({ _id: listId })
@@ -135,6 +150,7 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+
     shareList: async (parent, { listId, sharedWithId }, context) => {
       if(context.user) {
         // first collect relevant data about the shared user

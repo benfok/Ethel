@@ -44,6 +44,11 @@ a {
   position: fixed;
 }
 
+.isBlurred {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
 .btn-primary {
   padding: 10px 20px;
   border-radius: 20px;
