@@ -32,20 +32,21 @@ const CategoryManager = ( { categoryData }) => {
 
 
     return (
-        <div>
-            <form onSubmit={handleCreateCategory}>
-                <input onChange={(event) => setCategoryName(event.target.value)} />
-                <select onChange={(event) => setColor(event.target.value)}>
+        <div className="category-page">
+            <h3 className="home-h3">Add New Category</h3>
+            <form className="categories-form" onSubmit={handleCreateCategory}>
+                <input className="categories-input" onChange={(event) => setCategoryName(event.target.value)} />
+                <select className="categories-select" onChange={(event) => setColor(event.target.value)}>
                     {categoryColor.map((value, index) => (
-                         <option id={value} key={`color${index}`} value={value} style={{backgroundColor: `${value}`, fontSize: "30px"}}>   test</option>
+                         <option id={value} key={`color${index}`} value={value} style={{backgroundColor: `${value}`, fontSize: "30px"}}>{value}</option>
                     ))}
                 </select>
-                <button disabled={loading} type="submit">
+                <button className="add-btn" disabled={loading} type="submit">
                     Add
                 </button>
                 {error && <p>{error.message}</p>}
             </form>
-            <h3>My Categories</h3>
+            <h3 className="home-h3">My Categories</h3>
             {categories}
         </div>
         
