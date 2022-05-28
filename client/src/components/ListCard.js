@@ -4,7 +4,7 @@ import ItemContainer from './ItemContainer';
 import ModalDelete from './ModalDelete';
 import ModalShare from './ModalShare';
 
-const ListCard = ({listId, isOwner, categoryId, categoryDataState, currentCatIndex, subComponentReRender}) => {
+const ListCard = ({listId, isOwner, categoryId, categoryDataState, currentCatIndex, categoryReRender}) => {
 
     const [ deleteModal, setDeleteModal] = useState(false);
     const [ shareModal, setShareModal] = useState(false);
@@ -32,7 +32,7 @@ const ListCard = ({listId, isOwner, categoryId, categoryDataState, currentCatInd
                     categoryId = {categoryId}
                     currentCatIndex={currentCatIndex}
                     categoryDataState={categoryDataState} 
-                    subComponentReRender={subComponentReRender} />}
+                    categoryReRender={categoryReRender} />}
                 {shareModal && <ModalShare toggle={toggleShareModal} listId={listId} />}
                 <ItemContainer listId={listId} />
                 <div className='list-shared-container'>

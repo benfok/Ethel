@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 import { REMOVE_LIST } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-const ModalDelete = ({toggle, listId, categoryId, categoryDataState, currentCatIndex, subComponentReRender}) => {
+const ModalDelete = ({toggle, listId, categoryId, categoryDataState, currentCatIndex, categoryReRender}) => {
 
     const [loading, setLoading] = useState(false);
     const [removeList] = useMutation(REMOVE_LIST);
@@ -19,7 +19,7 @@ const ModalDelete = ({toggle, listId, categoryId, categoryDataState, currentCatI
         console.log(newListState)
         newCatState[currentCatIndex].lists = newListState
         console.log(newCatState);
-        subComponentReRender(currentCatIndex);
+        categoryReRender(currentCatIndex);
        
         const { data, loading, error } = await removeList({
             variables: {

@@ -5,7 +5,7 @@ import ethylPic from "../assets/ethyl-radiant.jpg";
 
 // receives category data and the index of a nested list array - if it exists
 // in the case of categories, the default category option and the all categories options within the drop down will not correspond with index values within the categories.lists array and so must be handled conditionally
-const Accordion = ({categoryDataState, currentCatIndex, subComponentReRender}) => {
+const Accordion = ({categoryDataState, currentCatIndex, categoryReRender}) => {
 //   console.log('cat-data', categoryData)
 
    let listData; 
@@ -23,7 +23,7 @@ const Accordion = ({categoryDataState, currentCatIndex, subComponentReRender}) =
                 categoryId = {category._id}
                 categoryDataState={categoryDataState} 
                 currentCatIndex={currentCatIndex}
-                subComponentReRender={subComponentReRender}
+                categoryReRender={categoryReRender}
             />
           ))
         ))
@@ -39,7 +39,7 @@ const Accordion = ({categoryDataState, currentCatIndex, subComponentReRender}) =
             categoryId = {categoryDataState[currentCatIndex]._id}
             categoryDataState={categoryDataState} 
             currentCatIndex={currentCatIndex}
-            subComponentReRender={subComponentReRender}
+            categoryReRender={categoryReRender}
           />
         ))
   }
@@ -49,7 +49,7 @@ const Accordion = ({categoryDataState, currentCatIndex, subComponentReRender}) =
         <div className="accordion-container">
           {listData}
         </div>
-        <img className="ethyl-pic" src={ethylPic} alt="ethyl" />
+        {/* <img className="ethyl-pic" src={ethylPic} alt="ethyl" /> */}
       </div>
     );
 };
