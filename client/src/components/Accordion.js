@@ -1,6 +1,7 @@
 import React from 'react';
 import List from './List';
 import '../styles/accordion.css';
+import ethylPic from "../assets/ethyl-radiant.jpg";
 
 // receives category data and the index of a nested list array - if it exists
 // in the case of categories, the default category option and the all categories options within the drop down will not correspond with index values within the categories.lists array and so must be handled conditionally
@@ -38,8 +39,11 @@ const Accordion = ({categoryData, listIndex}) => {
   }
 
     return (
-      <div className="accordion-container">
-        {listData}
+      <div className="accordion-pic-container">
+        <div className="accordion-container">
+          {listData}
+        </div>
+        <img className="ethyl-pic" src={ethylPic} alt="ethyl" />
       </div>
     );
 };
