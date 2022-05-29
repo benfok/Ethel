@@ -12,6 +12,7 @@ export default function Home() {
     const [ category, setCategory ] = useState('default');
     const [ optionIndex, setOptionIndex ] = useState();
     const [ categoryData, setCategoryData ] = useState();
+    const [ reRenderKey, setReRenderKey ] = useState('222');
 
     useEffect(() => {
         getCurrentUser()
@@ -39,6 +40,7 @@ export default function Home() {
             setOptionIndex(currentCatIndex)
             document.getElementById('category-icon').style.color = data.currentUser.categories[currentCatIndex].color;
             document.getElementById('category-select').value = data.currentUser.categories[currentCatIndex].categoryName;
+            setReRenderKey(Math.random().toString()) // forces the component to remount
         })
     }
     
@@ -60,12 +62,15 @@ export default function Home() {
             />
           </div>
          </div>
+         <div id="lists-wrapper" key={reRenderKey}>
             {!optionIndex && <CategoryManager categoryData={data.currentUser.categories} />}
             {optionIndex && <Accordion 
                 categoryDataState={categoryData} 
+                setCategoryData={setCategoryData}
                 categoryReRender={categoryReRender}
                 currentCatIndex={optionIndex}
             />}
+            </div>
         </>
         );
     }

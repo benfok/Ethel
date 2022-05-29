@@ -11,7 +11,7 @@ const ListCard = ({listId, isOwner, categoryId, categoryDataState, currentCatInd
     const [ deleteModal, setDeleteModal] = useState(false);
     const [ shareModal, setShareModal] = useState(false);
 
-    const [ reRenderKey, setReRenderKey ] = useState('123');
+    const [ reRenderKey, setReRenderKey ] = useState('222');
 
     useEffect(() => {
         getListItems({

@@ -10,7 +10,7 @@ import { QUERY_LIST } from '../utils/queries';
 const ItemContainer = ({listId, renderItems, listData, itemData}) => {
 
     const [ activeItems, setActiveItems ] = useState(itemData);
-    const [ activeList, setActiveList ] = useState(listData);
+    // const [ activeList, setActiveList ] = useState(listData);
 
     // const [getListItems, { loading, data }] = useLazyQuery(QUERY_LIST, {fetchPolicy: 'network-only'}); 
     // const data = useRef();
