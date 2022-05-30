@@ -81,10 +81,6 @@
      border-radius: 10px;
  }
 
- .ethyl-pic {
-     display: none;
- }
-
 @media (orientation: landscape) {
 
     .accordion-container {

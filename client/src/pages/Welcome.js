@@ -26,8 +26,8 @@ export default function Welcome() {
           I used to always lose track of my things, but then I learned to organize everything by keeping lists. Now I'm the most efficient granny around, and I can help you whippersnappers do the same! 
         </p>
         <p className="welcome-p">
-          Sign in to create your own lists and share them with your friends. Or if this is your first time here, click on the Demo button to see how I keep track of all my things. And can I interest you in a hard butterscotch candy?
-        </p>
+          Sign in to create your own lists, and organize them into whatever kinds of categories you like. Then you can share them with your friends and collaborate on them together! And can I interest you in a hard butterscotch candy?
+        </p> 
         <div className="btn-container-center">
           <Link to="/login">
             <button className="btn-primary">
@@ -37,11 +37,6 @@ export default function Welcome() {
           <Link to="/signup">
             <button className="btn-primary">
               Signup
-            </button>
-          </Link>
-          <Link to="/demo">
-            <button className="btn-primary">
-              Demo
             </button>
           </Link>
           </div>
