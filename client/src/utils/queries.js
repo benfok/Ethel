@@ -30,6 +30,9 @@ export const QUERY_CURRENT_USER_ALL_DATA = gql`
             }
         shareHistory {
             _id
+            firstName
+            lastName
+            email
             }
         }
     }
@@ -98,6 +101,26 @@ query users {
       firstName
       lastName
       email
+      shareHistory {
+        _id
+        firstName
+        lastName
+        email
+      }
     }
   }
+`;
+
+export const QUERY_CURRENT_USER_SHARED_LIST = gql`
+query currentUser {
+    currentUser {
+    _id
+    shareHistory {
+        _id
+        firstName
+        lastName
+        email
+    }
+    }
+}
 `;

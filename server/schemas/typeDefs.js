@@ -58,6 +58,7 @@ const typeDefs = gql`
     addList(listName: String!, owner: ID!, categoryId: ID!): List
     removeList(listId: ID!, categoryId: ID!): List
     shareList(listId: ID!, sharedWithId: ID!): List
+    updateShareHistory(sharedWithId: ID!): User
 
   }
 `;

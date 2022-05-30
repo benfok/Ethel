@@ -81,9 +81,8 @@
      border-radius: 10px;
  }
 
- .list-card {
-     display: flex;
-     flex-direction: column;
+ .ethyl-pic {
+     display: none;
  }
 
 @media (orientation: landscape) {

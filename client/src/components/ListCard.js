@@ -5,11 +5,14 @@ import ModalDelete from './ModalDelete';
 import ModalShare from './ModalShare';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_LIST } from '../utils/queries';
+import ModalLoading from './ModalLoading';
+import SharedSection from './SharedSection';
 
 const ListCard = ({listId, isOwner, categoryId, categoryDataState, currentCatIndex, categoryReRender}) => {
 
     const [ deleteModal, setDeleteModal] = useState(false);
     const [ shareModal, setShareModal] = useState(false);
+    const [ loadingModal, setLoadingModal ] = useState(false);
 
     const [ reRenderKey, setReRenderKey ] = useState('222');
 
@@ -24,12 +27,20 @@ const ListCard = ({listId, isOwner, categoryId, categoryDataState, currentCatInd
     const [getListItems, { loading, data, error }] = useLazyQuery(QUERY_LIST, {fetchPolicy: 'network-only'}); 
 
     const renderItems = async () => {
-        const { data } = await getListItems({
+        const { data, loading } = await getListItems({
             variables: {
                 listId
             }
         })
-        setReRenderKey(Math.random().toString()) // forces the component to remount
+        if(loading) {
+            setLoadingModal(true);
+            console.log('loading')
+        }
+        if(data) {
+            setReRenderKey(Math.random().toString()) // forces the component to remount
+            setLoadingModal(false);
+            console.log('rendered')
+        }
     }
 
     const toggleDeleteModal = () => {
@@ -52,19 +63,20 @@ const ListCard = ({listId, isOwner, categoryId, categoryDataState, currentCatInd
     if(loading){<h4>Data loading...</h4>}
 
     if(data) {
-    console.log('data load')
+    console.log('data load', data)
         return (
             <div className='list-card' key={reRenderKey}>
+                {loadingModal && <ModalLoading text="Refreshing..." />}
                 {deleteModal && <ModalDelete 
                     toggle={toggleDeleteModal} listId={listId}         
                     categoryId = {categoryId}
                     currentCatIndex={currentCatIndex}
                     categoryDataState={categoryDataState} 
                     categoryReRender={categoryReRender} />}
-                {shareModal && <ModalShare toggle={toggleShareModal} listId={listId} />}
+                {shareModal && <ModalShare toggle={toggleShareModal} listData={data} />}
                 <ItemContainer listId={listId} renderItems={renderItems} listData={data.list} itemData={data.list.items} />
                 <div className='list-shared-container'>
-                    {listSharedWith}
+                    <SharedSection data={data} />
                 </div>
                 <div className='list-action-container'>
                     <button className="btn-list-action" onClick={renderItems}>Refresh</button>

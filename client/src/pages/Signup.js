@@ -14,7 +14,7 @@ function Signup(props) {
     event.preventDefault();
     const mutationResponse = await addUser({
       variables: {
-        email: formState.email,
+        email: formState.email.toLowerCase(),
         password: formState.password,
         firstName: formState.firstName,
         lastName: formState.lastName,

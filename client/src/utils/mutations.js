@@ -120,3 +120,19 @@ mutation shareList($listId: ID!, $sharedWithId: ID!) {
   }
 }
 `;
+
+export const UPDATE_SHARE_HISTORY = gql`
+mutation updateShareHistory($sharedWithId: ID!) {
+  updateShareHistory(sharedWithId: $sharedWithId) {
+    _id
+    firstName
+    lastName
+    shareHistory {
+      _id
+      firstName
+      lastName
+      email
+    }
+  }
+}
+`;

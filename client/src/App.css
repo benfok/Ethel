@@ -49,6 +49,11 @@ a {
   -webkit-filter: blur(2px);
 }
 
+.isDisabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 .btn-primary {
   padding: 10px 20px;
   border-radius: 20px;
