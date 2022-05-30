@@ -4,6 +4,11 @@
     box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
     background-color: var(--secondaryBg);
     padding-top: 1rem;
+    min-height: 350px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .item {
@@ -75,6 +80,7 @@
     font-size: 80%;
     color: var(--secondaryFont);
     text-align: center;
+    padding: 0 20px;
 }
 
 /* custom checkbox */

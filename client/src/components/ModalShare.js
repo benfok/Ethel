@@ -1,83 +1,62 @@
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import '../styles/modal.css';
-import { useMutation, useQuery } from '@apollo/client';
-import { SHARE_LIST } from '../utils/mutations';
-import Auth from '../utils/auth';
-import { QUERY_ALL_USERS } from '../utils/queries';
-import { FaSearch } from 'react-icons/fa'
+import SharedSection from './SharedSection';
+import ShareHistory from './ShareHistory';
+import ModalLoading from './ModalLoading';
+import ShareSearch from './ShareSearch';
 
-const ModalShare = ({toggle, listId}) => {
+const ModalShare = ({toggle, listData}) => {
 
+    const [ activeTab, setActiveTab ] = useState('tab1');
+    const [ sharedIds, setSharedIds ] = useState([]);
+    const [ loadingModal, setLoadingModal ] = useState(false);
+    const [ appThinking, setAppThinking ] = useState(false);
     
-    const { loading, data, error } = useQuery(QUERY_ALL_USERS, {
-        fetchPolicy: 'network-only'
-    })
-
-    let modalText = <p>Search for users by email address and share your list with them</p>;
-    
-    const [loadingUpdate, setLoadingUpdate] = useState(false);
-    // const [shareList] = useMutation(SHARE_LIST);
-
-    // const handleShareListDB = async (listId) => {
-
-    //          const token = Auth.loggedIn() ? Auth.getToken() : null;
-    //     if (!token) { return false; }
-
-    //     const { data, loading, error } = await shareList({
-    //         variables: {
-    //             listId,
-    //             // sharedWithId
-    //         }
-    //     });
-            
-    //     if (loading) {setLoadingUpdate(true)}
-    //     if (data) {
+    useEffect(() => {
+        let ids = [];
         
-    //         setloadingUpdate(false)
-    //         console.log('List shared:', data);
-    //         toggle()
-    //     } 
-    //     if (error) {console.log(error)}
-    // }
-    
-    const searchResults = (event) => {
+        if(listData.list.sharedWith) {
+            ids = listData.list.sharedWith.map((user, index) => {
+            return user._id
+            })
+        } else { ids = []; }
+
+        setSharedIds(ids);
+    }, []);
+
+    const handleChangeTab = (event, tabId) => {
         event.preventDefault();
-        console.log('stuff')
-    }
-    
-    const searchBar =
-            <div className="search-container">
-                <form onSubmit={searchResults}>
-                    <input type="text" placeholder="Enter email.." name="search" minLength="2" />
-                    <button type="submit">
-                        <FaSearch />
-                    </button>
-                </form>
-            </div>
-
-
-    if(loading) {
-        modalText = <p>Retrieving user data...</p>
+        setActiveTab(tabId)
     }
 
-    
-    if(error) {
-        modalText = <p>Unable to retrieve user data. Please try again.</p>
+    const setModalRemote = (value) => {
+        setLoadingModal(value)
     }
-    
-    if(data) {
-        modalText = <p>Search for users by email address and select them to share your list.</p>
-        console.log(data)
-    }
-    
+  
     return (
             <div className="modal-outer" id="modal-wrapper">
                 <section className='modal'>
+                    {loadingModal && <ModalLoading text="Please wait..." />}
                     <h4>Share List</h4>
-                    {modalText}
-                    {searchBar}
-                    <button className="btn-list-action" disabled={loadingUpdate} onClick={searchResults}>Confirm</button>
-                    <button className="btn-list-action" disabled={loadingUpdate} onClick={toggle}>Cancel</button>
+                    <ul>
+                        <li className='share-tab' id="tab1" key="tab1" onClick={event => handleChangeTab(event, event.target.id)}>Shared</li>
+                        <li className='share-tab' id="tab2" key="tab2" onClick={event => handleChangeTab(event, event.target.id)}>History</li>
+                        <li className='share-tab' id="tab3" key="tab3" onClick={event => handleChangeTab(event, event.target.id)}>Search</li>
+                    </ul>
+                    {activeTab === 'tab1' && 
+                        <div>
+                            <SharedSection data={listData} />
+                        </div>}
+                    {activeTab === 'tab2' && 
+                        <div>
+                            <p>Your recent Shared History</p>    
+                            <ShareHistory listData={listData} sharedIds={sharedIds} setSharedIds={setSharedIds} loadingModalState={loadingModal} setLoadingModal={setModalRemote}/>
+                        </div>}
+                    {activeTab === 'tab3' && 
+                        <div>
+                            <ShareSearch listData={listData} sharedIds={sharedIds} setSharedIds={setSharedIds} />
+                        </div>}
+                    <button className="btn-list-action" disabled={appThinking} onClick={toggle}>Return</button>
                 </section>
             </div>
         )

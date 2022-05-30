@@ -171,18 +171,46 @@ const resolvers = {
           { new: true }
         )
 
-        // add the list to the shared Users "uncategorized" category. This is always index 0 of the categories array
-        const addListToUser = async () => {
+        // add the list to the shared Users "uncategorized" category. This is always index 0 of the categories array. Also add the shared user to the list owner's share history
+        const updateUser = async () => {
           await User.findOneAndUpdate(
             { "_id": sharedWithId },
-            { $push: { "categories.0.lists" :  listId }},
+            { 
+              $push: { "categories.0.lists" :  listId },
+              $push: { shareHistory: {
+                _id : sharedWithId,
+                firstName: sharedWith.firstName,
+                lastName: sharedWith.lastName,
+                email: sharedWith.email
+              }}         
+            },
             { new: true }
           )
         }
 
-        await addListToUser();
+        await updateUser();
 
         return list
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    updateShareHistory: async (parent, { sharedWithId }, context) => {
+      if(context.user) {
+         // add the shared user to the list owner's share history
+          const user = await User.findOneAndUpdate(
+            { "_id": sharedWithId },
+            { 
+              $push: { shareHistory: {
+                _id : sharedWithId,
+                firstName: sharedWith.firstName,
+                lastName: sharedWith.lastName,
+                email: sharedWith.email
+              }}         
+            },
+            { new: true }
+          )
+          return user;
       }
       throw new AuthenticationError('You need to be logged in!');
     },

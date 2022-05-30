@@ -37,9 +37,11 @@ const Accordion = ({categoryDataState, setCategoryData, currentCatIndex, categor
               categoryId: categoryDataState[catIndex]._id
           }
       })
-      const newState = categoryDataState
-      await newState[catIndex].lists.unshift(data.addList); 
-      setCategoryData(newState)
+     
+      const newState = [...categoryDataState];
+      newState[catIndex].lists = [data.addList, ...newState[catIndex].lists];
+      setCategoryData(newState);
+      
       document.getElementById('add-list-form').reset(); // reset the text field after adding item
       } catch (err) {
       console.error(err);
