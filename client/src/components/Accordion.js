@@ -39,12 +39,9 @@ const Accordion = ({categoryData, listIndex}) => {
   }
 
     return (
-      <div className="accordion-pic-container">
         <div className="accordion-container">
           {listData}
         </div>
-        <img className="ethyl-pic" src={ethylPic} alt="ethyl" />
-      </div>
     );
 };
 
