@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 
 // receives category data and the index of a nested list array - if it exists
 // in the case of categories, the default category option and the all categories options within the drop down will not correspond with index values within the categories.lists array and so must be handled conditionally
-const List = ({listData, listIndex, color, categoryId}) => {
+const List = ({listData, listIndex, color, categoryId, categoryDataState, currentCatIndex, categoryReRender}) => {
   // console.log('list-data', listData)
   const [ activeList, setActiveList ] = useState({});
 
@@ -33,7 +33,14 @@ const List = ({listData, listIndex, color, categoryId}) => {
             {activeList === listData._id ? <IoIosArrowDropdownCircle /> : <IoIosArrowDropright />}
           </IconContext.Provider>
         </div>
-      {activeList === listData._id && <ListCard listId={listData._id} isOwner={isOwner} categoryId={categoryId} />}
+
+      {activeList === listData._id && <ListCard 
+        listId={listData._id} 
+        isOwner={isOwner} 
+        categoryId = {categoryId}
+        currentCatIndex={currentCatIndex}
+        categoryDataState={categoryDataState} 
+        categoryReRender={categoryReRender}  />}
       </div>
 
   )
