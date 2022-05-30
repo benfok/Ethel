@@ -3,17 +3,13 @@ import Category from '../components/Category';
 import '../styles/accordion.css';
 import { useMutation } from '@apollo/client';
 import { ADD_CATEGORY } from '../utils/mutations';
-import Auth from '../utils/auth';
 import { categoryColor } from '../utils/colors';
-import { FaSquare } from 'react-icons/fa'
-import { valueFromAST } from 'graphql';
+
 
 const CategoryManager = ( { categoryData }) => {
     const [categoryName, setCategoryName] = useState('');
     const [color, setColor] = useState('');
     const [createCategory, {loading, error }] = useMutation(ADD_CATEGORY)
-
-    const { data } = Auth.getProfile();
 
     function handleCreateCategory(event) {
         event.preventDefault();
@@ -36,7 +32,8 @@ const CategoryManager = ( { categoryData }) => {
             <h3 className="home-h3">Add New Category</h3>
             <form className="categories-form" onSubmit={handleCreateCategory}>
                 <input className="categories-input" onChange={(event) => setCategoryName(event.target.value)} />
-                <select className="categories-select" onChange={(event) => setColor(event.target.value)}>
+                <select className="categories-select" value="default" onChange={(event) => setColor(event.target.value)}>
+                    <option key="0" value="default" disabled hidden>Choose Color</option>
                     {categoryColor.map((value, index) => (
                          <option id={value} key={`color${index}`} value={value} style={{backgroundColor: `${value}`, fontSize: "30px"}}>{value}</option>
                     ))}

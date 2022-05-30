@@ -16,9 +16,7 @@ const ModalDelete = ({toggle, listId, categoryId, categoryDataState, currentCatI
 
         let newCatState = categoryDataState
         const newListState = await newCatState[currentCatIndex].lists.filter((list) => list._id !== listId);
-        console.log(newListState)
         newCatState[currentCatIndex].lists = newListState
-        console.log(newCatState);
         categoryReRender(currentCatIndex);
        
         const { data, loading, error } = await removeList({

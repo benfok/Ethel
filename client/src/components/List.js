@@ -24,6 +24,7 @@ const List = ({listData, listIndex, color, categoryId, categoryDataState, curren
 
   listData.owner === Auth.getProfile().data._id ? isOwner = true : isOwner = false;  // sets the editable flag
 
+
   return (
 
       <div className="accordion-div">
