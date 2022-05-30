@@ -27,13 +27,14 @@ const List = ({listData, listIndex, color, categoryId, categoryDataState, curren
 
   return (
 
-      <div>
+      <div className="accordion-div">
         <div className="list" data-index={listIndex} onClick={event => handleActiveListChange(event, listData._id)} style={{borderRight: `solid 15px ${color}` }}>
           <span>{listData.listName}</span>
           <IconContext.Provider value={{ className: "list-icon" }}>
             {activeList === listData._id ? <IoIosArrowDropdownCircle /> : <IoIosArrowDropright />}
           </IconContext.Provider>
         </div>
+
       {activeList === listData._id && <ListCard 
         listId={listData._id} 
         isOwner={isOwner} 

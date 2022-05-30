@@ -93,8 +93,7 @@ const Accordion = ({categoryDataState, setCategoryData, currentCatIndex, categor
         <div className="accordion-container">
           {listData}
         </div>
-        {/* <img className="ethyl-pic" src={ethylPic} alt="ethyl" /> */}
-      </div>
+        </div>
     );
 };
 
