@@ -5,7 +5,9 @@ import Auth from '../utils/auth';
 import { RiShareBoxFill } from 'react-icons/ri';
 
 const BtnShareList = ({sharedWithId, shareHistory, sharedIds, setSharedIds, listId, loadingModalState, setLoadingModal}) => {
-    
+
+    console.log('shared History', shareHistory)
+
     const [shareList] = useMutation(SHARE_LIST);
     const [updateShareHistory] = useMutation(UPDATE_SHARE_HISTORY);
 
@@ -34,7 +36,12 @@ const BtnShareList = ({sharedWithId, shareHistory, sharedIds, setSharedIds, list
 
     const handleUpdateShareHistory = async () => {
 
-        if(shareHistory.includes(sharedWithId)) {
+        const historyArray = await shareHistory.map((user) => {
+            return user._id
+        })
+
+
+        if(historyArray.includes(sharedWithId)) {
             console.log('user already in shared history')
         } else {
 

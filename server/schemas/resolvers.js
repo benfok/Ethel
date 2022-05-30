@@ -176,13 +176,7 @@ const resolvers = {
           await User.findOneAndUpdate(
             { "_id": sharedWithId },
             { 
-              $push: { "categories.0.lists" :  listId },
-              $push: { shareHistory: {
-                _id : sharedWithId,
-                firstName: sharedWith.firstName,
-                lastName: sharedWith.lastName,
-                email: sharedWith.email
-              }}         
+              $push: { "categories.0.lists" :  listId }     
             },
             { new: true }
           )

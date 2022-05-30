@@ -5,7 +5,7 @@ import { RiShareBoxFill } from 'react-icons/ri'
 import BtnShareList from './BtnShareList';
 
 const ShareHistory = ({listData, sharedIds, setSharedIds, loadingModalState, setLoadingModal}) => {
-    console.log('test', listData);
+
    const {loading, data, error} = useQuery(QUERY_CURRENT_USER_SHARED_LIST, {fetchPolicy: 'network-only'});
 
     if(loading) {
@@ -17,7 +17,7 @@ const ShareHistory = ({listData, sharedIds, setSharedIds, loadingModalState, set
     }
 
     if(data){
-        console.log('history', data)
+
         const userList = data.currentUser.shareHistory
         let sharedList;
         
