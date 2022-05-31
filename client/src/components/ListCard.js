@@ -36,18 +36,15 @@ const ListCard = ({listId, isOwner, categoryId, categoryDataState, currentCatInd
         })
         if(loading) {
             setLoadingModal(true);
-            console.log('loading')
         }
         if(data) {
             setReRenderKey(Math.random().toString()) // forces the component to remount
             setLoadingModal(false);
-            console.log('rendered')
         }
     }
 
     const toggleDeleteModal = () => {
         setDeleteModal(!deleteModal)
-        // document.getElementById('react-content-container').classList.toggle('isFixed');
     }
 
     const toggleShareModal = () => {
