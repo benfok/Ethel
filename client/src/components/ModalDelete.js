@@ -30,12 +30,11 @@ const ModalDelete = ({toggle, listId, categoryId, categoryDataState, currentCatI
         if (data) {
         
             setLoading(false)
-            console.log('List removed:', data);
+            console.log('List removed');
             toggle()
         } 
         if (error) {console.log(error)}
     }
-    console.log(Auth.getProfile())
 
     if(currentCatIndex === "all") {
         return (

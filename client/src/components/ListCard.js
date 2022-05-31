@@ -52,25 +52,17 @@ const ListCard = ({listId, isOwner, categoryId, categoryDataState, currentCatInd
 
     const toggleShareModal = () => {
         setShareModal(!shareModal)
-        // document.getElementById('react-content-container').classList.toggle('isFixed');
     }
 
     const toggleMoveModal = () => {
         setMoveModal(!moveModal)
-        // document.getElementById('react-content-container').classList.toggle('isFixed');
     }
-
-    const listSharedWith =
-        <p className="list-shared-p">
-            List shared with:<br/>
-            Place Holder | Place Holder | Place Holder
-        </p>;
 
     if(error){<h4>List data could not be loaded</h4>}
     if(loading){<h4>Data loading...</h4>}
 
     if(data) {
-    console.log('data load', data)
+
         return (
             <div className='list-card' key={reRenderKey}>
                 {loadingModal && <ModalLoading text="Refreshing..." />}

@@ -31,7 +31,6 @@ const ModalMove = ({toggle, listId, categoryId, categoryDataState, currentCatInd
         })
 
     const handleMoveList = async () => {
-        console.log(categoryId, listId)
 
         const token = Auth.loggedIn() ? Auth.getToken() : null;
         if (!token) { return false; }
@@ -48,7 +47,7 @@ const ModalMove = ({toggle, listId, categoryId, categoryDataState, currentCatInd
         if (data) {
         
             setLoading(false)
-            console.log('List Moved:', data);
+            console.log('List Moved');
             await toggle();
             await categoryReRender(categoryIndex);
         } 
