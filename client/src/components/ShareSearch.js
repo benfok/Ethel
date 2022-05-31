@@ -35,22 +35,18 @@ const ShareSearch = ({listData, sharedIds, setSharedIds, loadingModalState, setL
 
             const validResults = [];
 
-            console.log(data.users)
             for(let i = 0; i < data.users.length; i++) {
                 if(data.users[i].email.includes(event.target[0].value) && thisUser.data._id !== data.users[i]._id) {
                     validResults.push(data.users[i])
                 } 
             }
-
-            console.log(validResults)
-                
+               
                     if (validResults.length > 0) { 
 
                         result = 
                             validResults.map((user, index) => {
                             let alreadyShared = sharedIds.includes(user._id)
                             if (alreadyShared) {
-                                console.log('a')
                                 return (
                                     <div className="share-modal-result" key={`${listData.list._id}-search${index}`}>
                                         <div>
@@ -61,7 +57,6 @@ const ShareSearch = ({listData, sharedIds, setSharedIds, loadingModalState, setL
                                         </div>
                                     </div>)
                             } else {
-                                console.log('b')
                                 return (
                                     <div className="share-modal-result" key={`${listData.list._id}-search${index}`}>
                                         <div>

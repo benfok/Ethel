@@ -47,14 +47,14 @@ h2 {
 
 @media (orientation: landscape) {
     .main-content {
-        padding: 5% 10%;
+        padding: 0 10%;
     }
 
 }
 
 @media (min-width: 1600px) {
     .main-content {
-        padding: 5% 5%;
+        padding: 0 5%;
     }
 
 }

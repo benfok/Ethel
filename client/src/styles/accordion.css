@@ -18,6 +18,7 @@
     justify-content: center; 
     padding: 0 5%;
     margin-bottom: 2rem;
+    gap: 20px;
 }
 
 .add-list-btn {
@@ -108,8 +109,16 @@
     color: var(--primaryFont);
 }
 
- .categories-input, .categories-select, .add-btn, .form-field, .list, .list-card, .new-item {
+ .categories-input, .categories-select, .add-btn, .form-field, .list, .new-item {
      border-radius: 10px;
+ }
+
+ .list-card {
+     border-radius: 0 0 10px 10px;
+ }
+
+ .list-open {
+     border-radius: 10px 10px 0 0;
  }
 
 @media (orientation: landscape) {

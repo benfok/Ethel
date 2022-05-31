@@ -17,8 +17,10 @@ const List = ({listData, listIndex, color, categoryId, categoryDataState, curren
   const handleActiveListChange = (event, key) => {
     if(key === activeList) {
       setActiveList();
+      event.currentTarget.classList.remove('list-open');
     } else {
       setActiveList(key);
+      event.currentTarget.classList.add('list-open');
      }
   }
 
