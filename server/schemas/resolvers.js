@@ -36,7 +36,9 @@ const resolvers = {
         lists: []
       }];
       const user = await User.create({ firstName, lastName, email, password, categories });
-      const token = signToken(user);
+      console.log('resolver signup user', user)
+      const token = await signToken(user);
+      console.log('signup token', token)
       return { token, user };
     },
 
@@ -50,7 +52,9 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
       }
-      const token = signToken(user);
+      console.log('resolver login user', user)
+      const token = await signToken(user);
+      console.log('login token', token)
       return { token, user };
     },
 

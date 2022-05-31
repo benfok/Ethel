@@ -12,6 +12,7 @@ function Signup(props) {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
     const mutationResponse = await addUser({
       variables: {
         email: formState.email.toLowerCase(),
@@ -20,7 +21,9 @@ function Signup(props) {
         lastName: formState.lastName,
       },
     });
-    const token = mutationResponse.data.addUser.token;
+    console.log(mutationResponse)
+    const token = await mutationResponse.data.addUser.token;
+    console.log(token)
     Auth.login(token);
   };
 
