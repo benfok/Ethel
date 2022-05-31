@@ -195,7 +195,7 @@ const resolvers = {
         const sharedWith = await User.findById(sharedWithId).select("firstName lastName email")         
         // add the shared user to the list owner's share history
           const user = await User.findOneAndUpdate(
-            { "_id": sharedWithId },
+            { "_id": context.user._id },
             { 
               $push: { shareHistory: {
                 _id : sharedWith._id,
