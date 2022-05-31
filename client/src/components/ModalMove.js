@@ -53,7 +53,7 @@ const ModalMove = ({toggle, listId, categoryId, categoryDataState, currentCatInd
         return (
             <div className="modal-outer" id="modal-wrapper">
                 <section className='modal'>
-                    <h4>Move List</h4>
+                    <h4 className="modal-h4">Move List</h4>
                     {categoryList}
                     <button className="btn-list-action" disabled={loading} onClick={handleMoveList}>Confirm</button>
                     <button className="btn-list-action" disabled={loading} onClick={toggle}>Cancel</button>
