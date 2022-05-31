@@ -50,7 +50,6 @@ export default function Home() {
 
         return (
          <>
-         <div className="choose-category-field">
           <div className="category-dropdown-container">
             <Dropdown
                 value={category}
@@ -58,8 +57,7 @@ export default function Home() {
                 options={data.currentUser.categories}
             />
           </div>
-         </div>
-         <div id="lists-wrapper">
+         <>
             {!optionIndex && <CategoryManager categoryData={data.currentUser.categories} />}
             {optionIndex && <Accordion 
                 categoryDataState={categoryData} 
@@ -67,7 +65,7 @@ export default function Home() {
                 categoryReRender={categoryReRender}
                 currentCatIndex={optionIndex}
             />}
-            </div>
+         </>
         </>
         );
     }

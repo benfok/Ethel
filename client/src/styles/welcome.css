@@ -30,9 +30,6 @@
 }
 
 @media (orientation: landscape) {
-    section {
-        padding: 5% 10%;
-    }
     
     #greeting {
         flex-direction: row;

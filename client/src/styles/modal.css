@@ -23,6 +23,7 @@
     flex-direction: column;
     align-items: center;
     max-width: 90%;
+    min-width: 75%;
 }
 
 .modal-h4 {

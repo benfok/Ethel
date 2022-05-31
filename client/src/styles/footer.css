@@ -4,7 +4,7 @@ footer {
     justify-content: center;
     align-items: center;
     color: var(--secondaryFont);
-    /* margin-top: 20px; */
+    margin-top: 50px;
     height: 60px;
     background-color: rgb(169, 63, 211);
     color: white;

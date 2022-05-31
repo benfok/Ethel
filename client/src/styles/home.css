@@ -10,14 +10,15 @@
 .choose-category-field {
     display: flex;
     justify-content: center;
-    width: 95%;
+    width: 100%;
 }
 
 .category-dropdown-container {
     display: flex;
     flex-direction: row;
-    justify-content: center; 
+    justify-content: space-between; 
     width: 100%;
+    padding: 0 5%;
 }
 
 
@@ -28,7 +29,11 @@
     }
 
     .home-h2 {
-        margin-top: 80px;
+        margin-top: 150px;
+    }
+
+    .category-dropdown-container {
+        padding: 0 15%;
     }
 
    

@@ -69,14 +69,13 @@
 
 .new-item {
     resize: none;
-    width: 50vw;
     padding: 5px 10px;
     font-family: var(--fontFamily);
     font-size: 90%;
+    width: 100%;
 }
 
 .list-shared-p {
-    font-size: 80%;
     color: var(--secondaryFont);
     text-align: center;
     margin: 10px 0px;
@@ -84,6 +83,9 @@
 
 .shared-list {
   list-style-type: none;
+  font-weight: 600;
+  font-size: 90%;
+  padding-top: 10px;
 }
 
 /* custom checkbox */
