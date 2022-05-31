@@ -13,18 +13,20 @@ function Signup(props) {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    const mutationResponse = await addUser({
-      variables: {
-        email: formState.email.toLowerCase(),
-        password: formState.password,
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-      },
-    });
-    console.log(mutationResponse)
-    const token = await mutationResponse.data.addUser.token;
-    console.log(token)
-    Auth.login(token);
+    try {
+      const response = await addUser({
+        variables: {
+          email: formState.email.toLowerCase(),
+          password: formState.password,
+          firstName: formState.firstName,
+          lastName: formState.lastName,
+        },
+      });
+      const token = await response.data.addUser.token;
+      Auth.login(token);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleChange = (event) => {
