@@ -1,13 +1,14 @@
 #                               Meet Ethyl.
 
 
-![Ethyl's Imagery](https://ethyl.herokuapp.com/static/media/ethyl-radiant.6ece6a0c902384af06df.jpg)
+![Ethyl's Imagery](https://media.istockphoto.com/vectors/super-granny-vector-id1280115932?k=20&m=1280115932&s=612x612&w=0&h=74nigmU1WnszJii9UdafsC9mZOBsxZ9FgD5rQaOAuOs=)
 
 
 
-**Ethyl** I used to always lose track of my things, but then I learned to organize everything by keeping lists. Now I'm the most efficient granny around, and I can help you whippersnappers do the same!
+I used to always lose track of my things, but then I learned to organize everything by keeping lists. Now I'm the most efficient granny around, and I can help you whippersnappers do the same!
 
 **This is no ordinary list!** 
+
     - Easily create a list, and assign a category.
 
 	-Add and remove items from your lists. Check em off as you go!
@@ -68,20 +69,25 @@ Ethyl is a full-stack MERN application. The MERN stack is a web development fram
 [MongoDB](https://www.mongodb.com/lp/video/awareness/getting-started?utm_content=rlsapostreg&utm_source=google&utm_campaign=gs_americas_uscan_search_brand_dsa_atlas_desktop_rlsa_postreg&utm_term=&utm_medium=cpc_paid_search&utm_ad=&utm_ad_campaign_id=14383025495&adgroup=129270225314&gclid=Cj0KCQjw1tGUBhDXARIsAIJx01lbJXo8JteX2SpaXgHLbRhIxBFvLpxcMTMB5IVJwA4x7_eddigCResaAkPQEALw_wcB)
 
 [Express.JS](https://expressjs.com/)
+
 [React.JS](https://reactjs.org/docs/getting-started.html)
+
 [Node.JS](https://nodejs.org/api/documentation.html)
+
 [GraphQL](https://graphql.org/learn/)
-[Heroku](https://www.heroku.com/what)         
+
+[Heroku](https://www.heroku.com/what)       
+
 
 **Other Technological points of interest:**
 
--The app uses queries, and mutations to retreive, add, update, and delete data.
+The app uses queries, and mutations to retreive, add, update, and delete data.
 
--Includes authentication (JWT)
+Includes authentication (JWT).
 
--Application has a polished, and responsive UI
+Application has a polished, and responsive UI.
 
--The application is interactive (it both accepts and responds to user input).
+The application is interactive (it both accepts and responds to user input).
         
 
 
@@ -95,15 +101,17 @@ This project is developed by *groupFive*
 
 
 **Full-Stack Web Development:**
-    - Ben Fok
+
+     Ben Fok
         https://github.com/benfok
 
 
-    - Michael Fitzpatrick
+     Michael Fitzpatrick
         https://github.com/mlfitz2
 
 **Utility:**
-    - Daniel Klotz
+
+     Daniel Klotz
         https://github.com/Dan-Klo
 
 
