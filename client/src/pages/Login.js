@@ -14,13 +14,13 @@ function Login(props) {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const mutationResponse = await login({
+      const response = await login({
         variables: { email: formState.email.toLowerCase().trim(), password: formState.password },
       });
-      const token = mutationResponse.data.login.token;
+      const token = response.data.login.token;
       Auth.login(token);
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
   };
 
