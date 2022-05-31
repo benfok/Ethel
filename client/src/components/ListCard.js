@@ -75,12 +75,18 @@ const ListCard = ({listId, isOwner, categoryId, categoryDataState, currentCatInd
             <div className='list-card' key={reRenderKey}>
                 {loadingModal && <ModalLoading text="Refreshing..." />}
                 {deleteModal && <ModalDelete 
-                    toggle={toggleDeleteModal} listId={listId}         
+                    toggle={toggleDeleteModal} 
+                    listId={listId}         
                     categoryId = {categoryId}
                     currentCatIndex={currentCatIndex}
                     categoryDataState={categoryDataState} 
                     categoryReRender={categoryReRender} />}
-                {shareModal && <ModalMove toggle={toggleMoveModal} listData={data} />}
+                {moveModal && <ModalMove toggle={toggleMoveModal} 
+                    listId={listId}         
+                    categoryId = {categoryId}
+                    currentCatIndex={currentCatIndex}
+                    categoryDataState={categoryDataState} 
+                    categoryReRender={categoryReRender} />}
                 {shareModal && <ModalShare toggle={toggleShareModal} listData={data} />}
                 <ItemContainer listId={listId} renderItems={renderItems} listData={data.list} itemData={data.list.items} />
                 <div className='list-shared-container'>
