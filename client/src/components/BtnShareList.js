@@ -8,8 +8,6 @@ const BtnShareList = ({sharedWithId, shareHistory, sharedIds, setSharedIds, list
 
     const [buttonActive, setButtonActive] = useState();
 
-    console.log('shared History', shareHistory)
-
     const [shareList] = useMutation(SHARE_LIST);
     const [updateShareHistory] = useMutation(UPDATE_SHARE_HISTORY);
 
@@ -50,7 +48,6 @@ const BtnShareList = ({sharedWithId, shareHistory, sharedIds, setSharedIds, list
             console.log('user already in shared history')
         } else {
             
-            console.log('ID', sharedWithId)
             const { data, error } = await updateShareHistory({
                 variables: {
                     sharedWithId
