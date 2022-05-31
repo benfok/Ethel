@@ -37,7 +37,7 @@ const ModalShare = ({toggle, listData}) => {
             <div className="modal-outer" id="modal-wrapper">
                 <section className='modal'>
                     {loadingModal && <ModalLoading text="Please wait..." />}
-                    <h4>Share List</h4>
+                    <h4 className="modal-h4">Share List</h4>
                     <ul>
                         <li className='share-tab' id="tab1" key="tab1" onClick={event => handleChangeTab(event, event.target.id)}>Shared</li>
                         <li className='share-tab' id="tab2" key="tab2" onClick={event => handleChangeTab(event, event.target.id)}>History</li>

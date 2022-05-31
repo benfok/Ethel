@@ -39,7 +39,7 @@ const ModalDelete = ({toggle, listId, categoryId, categoryDataState, currentCatI
         return (
             <div className="modal-outer" id="modal-wrapper">
                 <section className='modal'>
-                    <h4>Delete List</h4>
+                    <h4 className="modal-h4">Delete List</h4>
                     {!loading && <p>Deleting a list will remove all items and cannot be undone. Are you sure?</p>}
                     {loading && <p>Deleting, please wait...</p>}
                     <button className="btn-list-action" disabled={loading} onClick={() => {handleRemoveList(listId, categoryId)}}>Confirm</button>

@@ -14,10 +14,12 @@
 }
 
 .category-dropdown-container {
-    width: 100%;
+    width: 75vw;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
+
+
 
 @media (orientation: landscape) {
     .choose-category-field {
