@@ -3,6 +3,7 @@ import '../styles/listCard.css';
 import ItemContainer from './ItemContainer';
 import ModalDelete from './ModalDelete';
 import ModalShare from './ModalShare';
+import ModalMove from './ModalMove';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_LIST } from '../utils/queries';
 import ModalLoading from './ModalLoading';
@@ -12,6 +13,7 @@ const ListCard = ({listId, isOwner, categoryId, categoryDataState, currentCatInd
 
     const [ deleteModal, setDeleteModal] = useState(false);
     const [ shareModal, setShareModal] = useState(false);
+    const [ moveModal, setMoveModal] = useState(false);
     const [ loadingModal, setLoadingModal ] = useState(false);
 
     const [ reRenderKey, setReRenderKey ] = useState('222');
@@ -53,6 +55,11 @@ const ListCard = ({listId, isOwner, categoryId, categoryDataState, currentCatInd
         // document.getElementById('react-content-container').classList.toggle('isFixed');
     }
 
+    const toggleMoveModal = () => {
+        setMoveModal(!moveModal)
+        // document.getElementById('react-content-container').classList.toggle('isFixed');
+    }
+
     const listSharedWith =
         <p className="list-shared-p">
             List shared with:<br/>
@@ -73,6 +80,7 @@ const ListCard = ({listId, isOwner, categoryId, categoryDataState, currentCatInd
                     currentCatIndex={currentCatIndex}
                     categoryDataState={categoryDataState} 
                     categoryReRender={categoryReRender} />}
+                {shareModal && <ModalMove toggle={toggleMoveModal} listData={data} />}
                 {shareModal && <ModalShare toggle={toggleShareModal} listData={data} />}
                 <ItemContainer listId={listId} renderItems={renderItems} listData={data.list} itemData={data.list.items} />
                 <div className='list-shared-container'>
@@ -81,7 +89,7 @@ const ListCard = ({listId, isOwner, categoryId, categoryDataState, currentCatInd
                 <div className='list-action-container'>
                     <button className="btn-list-action" onClick={renderItems}>Refresh</button>
                     {isOwner && <button className="btn-list-action" onClick={toggleShareModal}>Share</button>}
-                    {isOwner && <button className="btn-list-action">Move</button>}
+                    {isOwner && <button className="btn-list-action" onClick={toggleMoveModal}>Move</button>}
                     {isOwner && <button className="btn-list-action" onClick={toggleDeleteModal}>Delete</button>}
                 </div>
             </div>

@@ -136,3 +136,20 @@ mutation updateShareHistory($sharedWithId: ID!) {
   }
 }
 `;
+
+export const MOVE_LIST = gql`
+mutation moveList($listId: ID!, $oldCategoryId: ID!, $newCategoryId: ID!) {
+  moveList(listId: $listId, oldCategoryId: $oldCategoryId, newCategoryId: $newCategoryId) {
+    _id
+    firstName
+    lastName
+    categories {
+      _id
+      categoryName
+      lists {
+        _id
+      }
+    }
+  }
+}
+`;

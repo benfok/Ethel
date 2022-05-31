@@ -210,6 +210,31 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+
+    moveList: async (parent, { listId, oldCategoryId, newCategoryId }, context) => {
+      if(context.user) {
+
+        // add list to new category
+        const user = await User.findOneAndUpdate(
+            { "_id": context.user._id, "categories._id" : newCategoryId },
+            { $push: { "categories.$.lists" :  listId }}
+          )
+
+        // pull list from old category
+        const moveListFromCat = async () => {
+          await User.findOneAndUpdate(
+            { "_id": context.user._id, "categories._id" : oldCategoryId },
+            { $pull: { "categories.$.lists" :  listId }},
+            { new: true }
+          )
+        }
+        
+        await moveListFromCat();
+
+        return user;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 };
 

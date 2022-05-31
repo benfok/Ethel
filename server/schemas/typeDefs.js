@@ -59,7 +59,7 @@ const typeDefs = gql`
     removeList(listId: ID!, categoryId: ID!): List
     shareList(listId: ID!, sharedWithId: ID!): List
     updateShareHistory(sharedWithId: ID!): User
-
+    moveList(listId: ID!, oldCategoryId: ID!, newCategoryId: ID!): User
   }
 `;
 
