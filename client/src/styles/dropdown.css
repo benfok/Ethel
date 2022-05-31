@@ -2,7 +2,7 @@
     width:90%;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: center;
     margin: 2rem 0;
 }
 
@@ -21,4 +21,8 @@
     display: flex;
     align-items: center;
     padding-left: 2rem;
+}
+
+#category-select {
+    width: 50vw;
 }
