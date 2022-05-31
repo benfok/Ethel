@@ -43,11 +43,20 @@ const client = new ApolloClient({
           items: {
             merge(existing, incoming){
               return incoming
-            }
-          }
-        }
-      }
-    }
+            },
+          },
+        },
+      },
+      // Category: {
+      //   fields: {
+      //     lists: {
+      //       merge(existing, incoming){
+      //         return incoming
+      //       },
+      //     },
+      //   },
+      // },
+    },
   }),
 });
 

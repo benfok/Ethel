@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CategoryManager from '../components/CategoryManager';
 import Dropdown from '../components/Dropdown';
 import Accordion from '../components/Accordion';
-import { useQuery, useLazyQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
 import '../styles/layout.css';
 import '../styles/home.css';
 
@@ -12,15 +12,11 @@ export default function Home() {
     const [ category, setCategory ] = useState('default');
     const [ optionIndex, setOptionIndex ] = useState();
     const [ categoryData, setCategoryData ] = useState();
-    const [ reRenderKey, setReRenderKey ] = useState('222');
 
     useEffect(() => {
         getCurrentUser()
     }, []);
 
-    // const { loading, data } = useQuery(QUERY_CURRENT_USER, {
-    //     fetchPolicy: 'network-only'
-    // })
 
     const [getCurrentUser, { loading, data }] = useLazyQuery(QUERY_CURRENT_USER, {
         fetchPolicy: 'network-only'
@@ -36,11 +32,12 @@ export default function Home() {
     const categoryReRender = async (currentCatIndex) => {
 
         await getCurrentUser()
-        .then(() => {
+        .then((response) => {
             setOptionIndex(currentCatIndex)
-            document.getElementById('category-icon').style.color = data.currentUser.categories[currentCatIndex].color;
-            document.getElementById('category-select').value = data.currentUser.categories[currentCatIndex].categoryName;
-            setReRenderKey(Math.random().toString()) // forces the component to remount
+            setCategoryData(response.data.currentUser.categories)
+            setCategory(response.data.currentUser.categories[currentCatIndex].categoryName)
+            document.getElementById('category-icon').style.color = response.data.currentUser.categories[currentCatIndex].color;
+            document.getElementById('category-select').value = response.data.currentUser.categories[currentCatIndex].categoryName;
         })
     }
     
@@ -62,7 +59,7 @@ export default function Home() {
             />
           </div>
          </div>
-         <div id="lists-wrapper" key={reRenderKey}>
+         <div id="lists-wrapper">
             {!optionIndex && <CategoryManager categoryData={data.currentUser.categories} />}
             {optionIndex && <Accordion 
                 categoryDataState={categoryData} 

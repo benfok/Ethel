@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { MOVE_LIST } from '../utils/mutations'; 
 import { FaSquare } from 'react-icons/fa';
 import Auth from '../utils/auth';
+import { IconContext } from 'react-icons/lib';
 
 const ModalMove = ({toggle, listId, categoryId, categoryDataState, currentCatIndex, categoryReRender}) => {
 
@@ -10,20 +11,23 @@ const ModalMove = ({toggle, listId, categoryId, categoryDataState, currentCatInd
     const [loading, setLoading] = useState(false)
     const [moveList] = useMutation(MOVE_LIST);
     const [newCategory, setNewCategory] = useState();
+    const [categoryIndex, setCategoryIndex] = useState();
     
     const newCategorySelect = (event) => {
-        console.log(event.target)
-        // setNewCategory()
+        setNewCategory(event.currentTarget.dataset.id)
+        setCategoryIndex(event.currentTarget.dataset.index)
     }
 
-    const categoryList = 
-        categoryDataState.map((category) => {
-            <div className='move-category-list' onClick={event => newCategorySelect(event)}>
-                <div data-id={category._id} key={`move-list-${category._id}`}>category.categoryName</div>
-                <div className="dropdown-icon" id="category-icon">
+    const categoryList =
+        categoryDataState.map((category, index) => {
+            return (
+            <div className='move-category-list' data-id={category._id} data-index={index} onClick={event => newCategorySelect(event)} key={`move-list-${category._id}`}>
+                <div>{category.categoryName}</div>
+                <IconContext.Provider value={{ className: "move-list-icon", color: `${category.color}`, size: '20px'}}>
                     <FaSquare />
-                </div>
+                </IconContext.Provider>
             </div>
+            )
         })
 
     const handleMoveList = async () => {
@@ -36,7 +40,7 @@ const ModalMove = ({toggle, listId, categoryId, categoryDataState, currentCatInd
             variables: {
                 listId,
                 oldCategoryId: categoryId,
-                newCategoryId: categoryId
+                newCategoryId: newCategory
             }
         });
             
@@ -45,7 +49,8 @@ const ModalMove = ({toggle, listId, categoryId, categoryDataState, currentCatInd
         
             setLoading(false)
             console.log('List Moved:', data);
-            toggle()
+            await toggle();
+            await categoryReRender(categoryIndex);
         } 
         if (error) {console.log(error)}
     }

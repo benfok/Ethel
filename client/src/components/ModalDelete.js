@@ -36,6 +36,18 @@ const ModalDelete = ({toggle, listId, categoryId, categoryDataState, currentCatI
         if (error) {console.log(error)}
     }
     console.log(Auth.getProfile())
+
+    if(currentCatIndex === "all") {
+        return (
+            <div className="modal-outer" id="modal-wrapper">
+                <section className='modal'>
+                    <h4 className="modal-h4">Delete List</h4>
+                    <p>You cannot delete a list from the All Lists view. Please navigate to the specific category to delete a list.</p>
+                    <button className="btn-list-action" disabled={loading} onClick={toggle}>Return</button>
+                </section>
+            </div>
+        )
+    }
         return (
             <div className="modal-outer" id="modal-wrapper">
                 <section className='modal'>
