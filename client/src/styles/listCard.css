@@ -65,11 +65,12 @@
     width: 100%;
     padding: 0 10px;
     margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
 }
 
 .new-item {
     resize: none;
-    width: 50vw;
     padding: 5px 10px;
     font-family: var(--fontFamily);
     font-size: 90%;
