@@ -12,6 +12,15 @@
     width: 85%;
 }
 
+.new-list-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.add-list-btn {
+    margin-left: 10px;
+}
+
 .add-btn {
     background-color: rgb(169, 63, 211);
     color: white;
@@ -87,6 +96,7 @@
         justify-content: space-between;
         flex-direction: row;
         align-items:baseline;
+        width: 85vw;
     }
 
     .list {
