@@ -38,11 +38,7 @@ const BtnShareList = ({sharedWithId, shareHistory, sharedIds, setSharedIds, list
 
         const historyArray = await shareHistory.map((user) => {
             return user._id
-        })
-
-        console.log('history', historyArray)
-        console.log(typeof sharedWithId)
-        
+        })     
         
         if(historyArray.includes(sharedWithId)) {
             console.log('user already in shared history')

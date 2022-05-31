@@ -88,7 +88,7 @@ const Accordion = ({categoryDataState, setCategoryData, currentCatIndex, categor
           />
         ))
   }
-
+    console.log('list', listData)
     return (
       <div className="accordion-pic-container">
         {addListForm}

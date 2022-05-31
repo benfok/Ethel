@@ -30,15 +30,24 @@
 }
 
 .add-btn {
-    background-color: rgb(169, 63, 211);
-    color: white;
-    padding: 2%;
+    background-color: var(--headerBg);
+    color: var(--headerFont);
+    padding: 10px;
     margin-left: 10px;
+}
+
+.add-btn:hover,
+.add-btn:active {
+    cursor: pointer;
+    background-color: var(--headerFont);
+    color: var(--primaryFont);
+    border-color: var(--headerBg);
 }
 
 .categories-input {
     margin-right: 10px;
     padding: 1%;
+    font-size: 100%;
 }
 
 .categories {
@@ -75,7 +84,7 @@
 }
 
 .accordion-div {
-    width: 90%;
+    /* width: 90%; */
 }
 
 .list {

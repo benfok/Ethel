@@ -8,7 +8,7 @@ import { categoryColor } from '../utils/colors';
 
 const CategoryManager = ( { categoryData }) => {
     const [categoryName, setCategoryName] = useState('');
-    const [color, setColor] = useState('');
+    const [color, setColor] = useState('default');
     const [createCategory, {loading, error }] = useMutation(ADD_CATEGORY)
 
     function handleCreateCategory(event) {
@@ -32,10 +32,10 @@ const CategoryManager = ( { categoryData }) => {
             <h3 className="home-h3">Add New Category</h3>
             <form className="categories-form" onSubmit={handleCreateCategory}>
                 <input className="categories-input" onChange={(event) => setCategoryName(event.target.value)} />
-                <select className="categories-select" value="default" onChange={(event) => setColor(event.target.value)}>
+                <select className="categories-select" value={color} onChange={(event) => setColor(event.target.value)}>
                     <option key="0" value="default" disabled hidden>Choose Color</option>
                     {categoryColor.map((value, index) => (
-                         <option id={value} key={`color${index}`} value={value} style={{backgroundColor: `${value}`, fontSize: "30px"}}>{value}</option>
+                         <option id={value} key={`color${index}`} value={value} style={{backgroundColor: `${value}`, fontSize: "15px", color: `${value}`}}>{value}</option>
                     ))}
                 </select>
                 <button className="add-btn" disabled={loading} type="submit">

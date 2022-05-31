@@ -38,7 +38,7 @@ const ModalShare = ({toggle, listData}) => {
                 <section className='modal'>
                     {loadingModal && <ModalLoading text="Please wait..." />}
                     <h4 className="modal-h4">Share List</h4>
-                    <ul>
+                    <ul className='share-tab-container'>
                         <li className='share-tab' id="tab1" key="tab1" onClick={event => handleChangeTab(event, event.target.id)}>Shared</li>
                         <li className='share-tab' id="tab2" key="tab2" onClick={event => handleChangeTab(event, event.target.id)}>History</li>
                         <li className='share-tab' id="tab3" key="tab3" onClick={event => handleChangeTab(event, event.target.id)}>Search</li>
@@ -49,7 +49,7 @@ const ModalShare = ({toggle, listData}) => {
                         </div>}
                     {activeTab === 'tab2' && 
                         <div>
-                            <p>Your recent Shared History</p>    
+                            <p className='list-shared-p'>Your recent Shared History</p>    
                             <ShareHistory listData={listData} sharedIds={sharedIds} setSharedIds={setSharedIds} loadingModalState={loadingModal} setLoadingModal={setModalRemote}/>
                         </div>}
                     {activeTab === 'tab3' && 

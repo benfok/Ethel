@@ -7,7 +7,6 @@ import { IconContext } from 'react-icons/lib';
 
 const ModalMove = ({toggle, listId, categoryId, categoryDataState, currentCatIndex, categoryReRender}) => {
 
-    console.log(categoryDataState)
     const [loading, setLoading] = useState(false)
     const [moveList] = useMutation(MOVE_LIST);
     const [newCategory, setNewCategory] = useState();
@@ -16,16 +15,20 @@ const ModalMove = ({toggle, listId, categoryId, categoryDataState, currentCatInd
     const newCategorySelect = (event) => {
         setNewCategory(event.currentTarget.dataset.id)
         setCategoryIndex(event.currentTarget.dataset.index)
+        event.currentTarget.previousSibling.checked = true;
     }
 
     const categoryList =
         categoryDataState.map((category, index) => {
             return (
-            <div className='move-category-list' data-id={category._id} data-index={index} onClick={event => newCategorySelect(event)} key={`move-list-${category._id}`}>
-                <div>{category.categoryName}</div>
-                <IconContext.Provider value={{ className: "move-list-icon", color: `${category.color}`, size: '20px'}}>
-                    <FaSquare />
-                </IconContext.Provider>
+            <div key={`move-list-${category._id}`}>
+                <input className="move-category-input" type="radio" value={category._id} name="newCategory" />
+                <label htmlFor={category._id} className='move-category' data-id={category._id} data-index={index} onClick={event => newCategorySelect(event)} >
+                    <span>{category.categoryName}</span>
+                    <IconContext.Provider value={{ className: "move-list-icon", color: `${category.color}`, size: '20px'}}>
+                        <FaSquare />
+                    </IconContext.Provider>
+                </label>
             </div>
             )
         })
@@ -58,9 +61,14 @@ const ModalMove = ({toggle, listId, categoryId, categoryDataState, currentCatInd
             <div className="modal-outer" id="modal-wrapper">
                 <section className='modal'>
                     <h4 className="modal-h4">Move List</h4>
-                    {categoryList}
-                    <button className="btn-list-action" disabled={loading} onClick={handleMoveList}>Confirm</button>
-                    <button className="btn-list-action" disabled={loading} onClick={toggle}>Cancel</button>
+                    <p>Select a new category, then click Move</p><br/>
+                    <div className="modal-category-list">
+                        {categoryList}
+                    </div>
+                    <div className='modal-action-buttons'>
+                        <button className="btn-list-action" disabled={loading} onClick={handleMoveList}>Move</button>
+                        <button className="btn-list-action" disabled={loading} onClick={toggle}>Cancel</button>
+                    </div>
                 </section>
             </div>
         )
