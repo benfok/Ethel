@@ -46,6 +46,7 @@ function Signup(props) {
               type="firstName"
               id="firstName"
               required
+              aria-required="true"
               onChange={handleChange}
             />
             <label htmlFor="lastName">Last Name:</label>
@@ -56,6 +57,7 @@ function Signup(props) {
               type="lastName"
               id="lastName"
               required
+              aria-required="true"
               onChange={handleChange}
             />
             <label htmlFor="email">Email:</label>
@@ -66,6 +68,8 @@ function Signup(props) {
               type="email"
               id="email"
               required
+              aria-required="true"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
               onChange={handleChange}
             />
             <label htmlFor="pwd">Password:</label>
@@ -76,6 +80,8 @@ function Signup(props) {
               type="password"
               id="pwd"
               required
+              aria-required="true"
+              minLength="6"
               onChange={handleChange}
             />
           <div className="btn-container-left">
