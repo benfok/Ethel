@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import  { useMutation } from '@apollo/client';
 import { SHARE_LIST, UPDATE_SHARE_HISTORY } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { RiShareBoxFill } from 'react-icons/ri';
 
 const BtnShareList = ({sharedWithId, shareHistory, sharedIds, setSharedIds, listId, loadingModalState, setLoadingModal}) => {
+
+    const [buttonActive, setButtonActive] = useState();
 
     console.log('shared History', shareHistory)
 
@@ -14,22 +16,22 @@ const BtnShareList = ({sharedWithId, shareHistory, sharedIds, setSharedIds, list
     const handleShareListDB = async (event) => {
         event.preventDefault();
 
+        setButtonActive('isDisabled');
+
         const token = Auth.loggedIn() ? Auth.getToken() : null;
         if (!token) { return false; }
 
-        const { data, loading, error } = await shareList({
+        const { data, error } = await shareList({
             variables: {
                 listId,
                 sharedWithId
             }
         });
-            
-        if (loading) {setLoadingModal(true)}
+        
         if (data) {
-             setLoadingModal(false)
-             setSharedIds([...sharedIds, sharedWithId])
-             console.log('hello')
-             await handleUpdateShareHistory()
+            console.log('hello', data)
+            await handleUpdateShareHistory()
+            setSharedIds([...sharedIds, sharedWithId])
         } 
         if (error) {console.log(error)}
     }
@@ -40,20 +42,22 @@ const BtnShareList = ({sharedWithId, shareHistory, sharedIds, setSharedIds, list
             return user._id
         })
 
-
+        console.log('history', historyArray)
+        console.log(typeof sharedWithId)
+        
+        
         if(historyArray.includes(sharedWithId)) {
             console.log('user already in shared history')
         } else {
-
-            const { data, loading, error } = await updateShareHistory({
-                variable: {
+            
+            console.log('ID', sharedWithId)
+            const { data, error } = await updateShareHistory({
+                variables: {
                     sharedWithId
                 }
             });
 
-            if (loading) {setLoadingModal(true)}
             if (data) {
-                setLoadingModal(false)
                 console.log('user added to share history')
             } 
             if (error) {console.log(error)}
@@ -61,7 +65,7 @@ const BtnShareList = ({sharedWithId, shareHistory, sharedIds, setSharedIds, list
     }
 
     return (
-        <div className="item-delete-icon" data-id={sharedWithId} onClick={handleShareListDB}>
+        <div className={`item-delete-icon ${buttonActive}`} data-id={sharedWithId} onClick={handleShareListDB}>
             <RiShareBoxFill />
         </div>
     )
