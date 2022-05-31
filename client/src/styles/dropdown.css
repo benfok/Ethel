@@ -1,5 +1,5 @@
 .dropdown-menu {
-    width:90%;
+    width:100%;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
@@ -7,7 +7,7 @@
 }
 
 .dropdown-menu select {
-    padding: 1rem;
+    /* padding: 0 10%; */
     background-color: var(--secondaryBg);
 }
 
@@ -24,5 +24,6 @@
 }
 
 #category-select {
-    width: 50vw;
+    /* width: 50vw; */
+    font-size: 80%;
 }

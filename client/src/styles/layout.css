@@ -1,5 +1,4 @@
 .main-content {
-    width: 100vw;
     min-height: 100vh;
     display: flex;
     flex-flow: column nowrap;
@@ -46,4 +45,17 @@ h2 {
     text-align: center;
 }
 
+@media (orientation: landscape) {
+    .main-content {
+        padding: 5% 10%;
+    }
+
+}
+
+@media (min-width: 1600px) {
+    .main-content {
+        padding: 5% 5%;
+    }
+
+}
 
