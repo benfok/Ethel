@@ -9,7 +9,7 @@ const ShareHistory = ({listData, sharedIds, setSharedIds, loadingModalState, set
    const {loading, data, error} = useQuery(QUERY_CURRENT_USER_SHARED_LIST, {fetchPolicy: 'network-only'});
 
     if(loading) {
-        return <h4>Loading list...</h4>
+        return <h4 className='modal-h4'>Loading list...</h4>
     }
 
     if(error) {
@@ -50,7 +50,7 @@ const ShareHistory = ({listData, sharedIds, setSharedIds, loadingModalState, set
             });
 
         } else {
-            sharedList = <p>You have not shared any lists.</p>;
+            sharedList = <p className='list-shared-p'>You have not shared any lists.</p>;
         }
 
 

@@ -53,8 +53,10 @@ const ModalDelete = ({toggle, listId, categoryId, categoryDataState, currentCatI
                     <h4 className="modal-h4">Delete List</h4>
                     {!loading && <p>Deleting a list will remove all items and cannot be undone. Are you sure?</p>}
                     {loading && <p>Deleting, please wait...</p>}
-                    <button className="btn-list-action" disabled={loading} onClick={() => {handleRemoveList(listId, categoryId)}}>Confirm</button>
-                    <button className="btn-list-action" disabled={loading} onClick={toggle}>Cancel</button>
+                    <div className='modal-action-buttons'>
+                        <button className="btn-list-action" disabled={loading} onClick={() => {handleRemoveList(listId, categoryId)}}>Confirm</button>
+                        <button className="btn-list-action" disabled={loading} onClick={toggle}>Cancel</button>
+                    </div>
                 </section>
             </div>
         )
