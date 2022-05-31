@@ -69,7 +69,7 @@
 
 .new-item {
     resize: none;
-    width: 100%;
+    width: 50vw;
     font-size: 100%;
     padding: 5px 10px;
     font-family: var(--fontFamily);
