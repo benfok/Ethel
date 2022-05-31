@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/layout.css';
+import '../styles/home.css'
 import UserHome from './UserHome';
 import { Link } from 'react-router-dom';
 
@@ -16,7 +17,7 @@ export default function Home() {
             </>
         ) : (
             <>
-                <h2>You must be logged in to view this page</h2>
+                <h2 className="home-h2">You must be logged in to view this page</h2>
                 <div className="btn-container-center">
                     <Link to="/login">
                         <button className="btn-primary">
