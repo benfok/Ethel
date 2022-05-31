@@ -52,7 +52,7 @@ const Accordion = ({categoryDataState, setCategoryData, currentCatIndex, categor
    const addListForm =
    <form className="new-list-container" onSubmit={handleAddList}  id="add-list-form">
        <input type="text" className="new-item" maxLength="30" minLength="3" placeholder="Enter New List Name..." onChange={(event) => setListName(event.target.value)}></input>
-       <button className="btn-primary" type="submit">Add</button>
+       <button className="btn-primary add-list-btn" type="submit">Add</button>
    </form>;
 
    if (currentCatIndex === 'all') {
