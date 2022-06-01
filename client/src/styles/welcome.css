@@ -34,7 +34,8 @@
     #greeting {
         flex-direction: row;
         justify-content: space-evenly;
-        margin-top: 50px;
+        margin-top: 150px;
+        margin-bottom: 40px;
     }
 
     .welcome-h2 {
