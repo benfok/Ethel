@@ -1,35 +1,32 @@
-#                               Meet Ethyl.
+# Ethel
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## Description
+I used to always forget important things, but then I learned to organize everything by creating a reliable place to store those hard to remember items. Now I'm the most efficient granny around, and I can help you whippersnappers clear your mind-clutter and do the same! **Ethel** is not just an ordinary granny, or an ordinary list making application. Sure, you can create lists, sort them into categories and easily add and remove items, but you can also share lists with other people and collaborate instantly. 
 
-![Ethyl's Imagery](https://media.istockphoto.com/vectors/super-granny-vector-id1280115932?k=20&m=1280115932&s=612x612&w=0&h=74nigmU1WnszJii9UdafsC9mZOBsxZ9FgD5rQaOAuOs=)
+Left your grocery list under the fridge magnet? Mobile-first development means your lists are right at home on your phone, and more importantly always with you. Want to know what items your partner or roommate just picked up from 5 aisles over? Share and work off the same list in the store, in real time. Need a place to share movie recommendations, gift ideas or party planning to-dos? Ethel's got you covered.
 
+<details>
+<summary><strong>Table of Contents</strong></summary>
 
+- [Background, Credits and Tech](#background-credits-and-tech)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing Guidelines](#contributing-guidelines)
+- [Tests](#tests)
+- [Screenshots](#screenshots)
+- [Questions and Links](#questions-and-links)
+- [Details and Learnings](#details-and-learnings)
+</details>
 
-I used to always lose track of my things, but then I learned to organize everything by keeping lists. Now I'm the most efficient granny around, and I can help you whippersnappers do the same!
+## Background, Credits and Tech
 
-**This is no ordinary list!** 
+We began by defining a simple **USER STORY**
 
-    - Easily create a list, and assign a category.
-
-	-Add and remove items from your lists. Check em off as you go!
-	
-	-SHARE YOUR LISTS. Collaborate with friends, and see what items they have checked off the list!
-
-
-Ethyl is here to show the effectiveness of something as simple as a list. Combine that with the collaborative experience of sharing, and you have a very powerful tool at your fingertips. Mobile-first developement means your lists are right at home on your phone, and more importantly always with you.
-
-
-
-
-##                  Who is **Ethyl** Made for?
-
-
-![A very busy person](https://www.franksonnenbergonline.com/wp-content/uploads/2020/04/image_why-do-busy-people-get-stuff-done.jpg)
-
-Ethyl believes that anyone can benefit from her experience!
-
-**AS A USER**
-AS A busy person with lots to remember
+<details>
+<summary><strong>User Story</strong></summary>
+<code>AS A busy person with lots to remember
 I WANT an easy way to keep track of my life and share information with others
 
 I WANT to create lists and categorize them however I want
@@ -49,90 +46,85 @@ SO THAT I can easily share other lists with them again
 
 I WANT the interface to be responsive and intuitive
 SO THAT it’s easy to add and review items
+</code>
+</details>
+
+This app was built with contributions from the following:
+- [benfok](https://github.com/benfok/): Full Stack Development: Back-end Node and Express setup, GraphQL queries and resolvers, authentication, database schemas, models and seeds. Front-end React and responsive custom CSS. Concept and wireframing.
+- [mlfitz2](https://github.com/mlfitz2): Back-end models. Front-end responsive CSS. Concept and wireframing.
+- [Dan-Klo](https://github.com/Dan-Klo): Utility, project planning and documentation. Concept and wireframing.
+
+### Languages and Modules Used
+Ethyl is a full-stack MERN application built using the following languages and modules:
+
+- [MongoDB](https://www.mongodb.com) for data storage
+- [Express.JS](https://expressjs.com/) as a webserver framework for [Node.JS](https://nodejs.org/api/documentation.html)
+- Front-end built entirely using [React.JS](https://reactjs.org)
+- Leveraging [GraphQL] and Apollo (https://graphql.org) for database CRUD operations
+- Deployed on [Heroku](https://www.heroku.com)    
+- Other Dependency Packages Include:
+  - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) (JWT) for authentication
+  - [mongoose](https://www.npmjs.com/package/mongoose) as an ODM for MongoDB
+  - [react-icons](https://www.npmjs.com/package/react-icons) as an icon library
+  - [react-router-dom](https://www.npmjs.com/package/react-router-dom) for in-app routing
+  - [bcrypt](https://www.npmjs.com/package/bcrypt) module for password encryption for sign-up and login functionality
+  - [dotenv](https://www.npmjs.com/package/dotenv) used to host credentials in an environment file 
+
+## Installation
+### Local Installation
+- Clone the repo.
+- Navigate to the root folder and run `npm init` followed by `npm run install` in order to install the dependencies.
+- Be sure to add a MongoDB string and JWT session secret to the .env.EXAMPLE file and rename to .env.
+- Run the command `npm run seed` to load seed data
+- run `npm run develop` to run the application on your local machine running at http://localhost:3000/.
+
+## Usage
+To use the application sign-up by creating your own user or use the username and password stored in the seeds/userData.json file to login as Ethel. 
+
+## License
+Distributed under the **MIT** license.
+
+## Contributing Guidelines
+Contributions help our open source community to continue to evolve, and any contributions are greatly appreciated. If you have a suggestion that would improve this code please follow the directions below. I require that any and all changes adhere to the Code of Conduct outlined in the [Contributor Covenant](https://www.contributor-covenant.org/).
+
+ - Fork the repo
+ - Create your feature branch
+ - Commit your changes
+ - Push the branch and open a pull request
+
+> _**Note:** Any contributions are understood to be under the same MIT that covers the project._
+
+## Tests
+There are currently no tests written for this application.
+
+## Screenshots
+Here are some screenshots of the deployed application
+
+![Screenshot of the main feed](./public/images/happy-place1.png)
+![Screenshot of the new post modal](./public/images/happy-place-post.png)
+![Screenshot of the profile page](./public/images/happy-place-profile.png)
 
 
-**Ideas for Stretch Goals, and Future Developement:**
-Pin lists to the top.
-Add a filter to sort lists by date created, alphabetical, length of list.
-Search for lists by keywords/items in list.
-Add a reminder for tasks.
-Be able to send message to connected users.
-Add a calendar that can be shared.
+## Questions and Links
+Please reach out with any questions regarding the application.
 
+The epository in [GitHub](https://github.com/benfok/Ethel)
 
+The deployed application on [Heroku](https://ethyl.herokuapp.com/)
 
-###                  Technologies and Development:
+## Details and Learnings
+- Creating the list actions modal within the context of each list itself rather than the full page allows the user to easily see which list they are acting on and keeps the functionality intuitive. There is a risk with this approach due to the potential size conflict between the user search modal and the list card size, for example if a search for users to share a list returns a large number of results.
+- Currently, the user must click Refresh on a shared list to view changes made by other users. Could consider a timed refresh here to make the app appear more dynamic.
+- When a list is shared it first lands in the recipient's "Uncategorized" category, allowing them to the Move it to a category of their choice.
+- When sharing a list, you cannot duplicate sharing, and lists can only be shared or deleted by their original owner.
+- Could refactor to store data in a global context rather than prop drilling list and category information through so many components.
 
-Ethyl is a full-stack MERN application. The MERN stack is a web development framework made up of the stack of MongoDB, Express.js, React.js, and Nodejs. It is one of the several variants of the MEAN stack.
-
-**Built With:**
-[MongoDB](https://www.mongodb.com/lp/video/awareness/getting-started?utm_content=rlsapostreg&utm_source=google&utm_campaign=gs_americas_uscan_search_brand_dsa_atlas_desktop_rlsa_postreg&utm_term=&utm_medium=cpc_paid_search&utm_ad=&utm_ad_campaign_id=14383025495&adgroup=129270225314&gclid=Cj0KCQjw1tGUBhDXARIsAIJx01lbJXo8JteX2SpaXgHLbRhIxBFvLpxcMTMB5IVJwA4x7_eddigCResaAkPQEALw_wcB)
-
-[Express.JS](https://expressjs.com/)
-
-[React.JS](https://reactjs.org/docs/getting-started.html)
-
-[Node.JS](https://nodejs.org/api/documentation.html)
-
-[GraphQL](https://graphql.org/learn/)
-
-[Heroku](https://www.heroku.com/what)       
-
-
-**Other Technological points of interest:**
-
-The app uses queries, and mutations to retreive, add, update, and delete data.
-
-Includes authentication (JWT).
-
-Application has a polished, and responsive UI.
-
-The application is interactive (it both accepts and responds to user input).
-        
-
-
-
-
-
-####                    Development Staff:
-
-
-This project is developed by *groupFive*
-
-
-**Full-Stack Web Development:**
-
-     Ben Fok
-        https://github.com/benfok
-
-
-     Michael Fitzpatrick
-        https://github.com/mlfitz2
-
-**Utility:**
-
-     Daniel Klotz
-        https://github.com/Dan-Klo
-
-
-
-
-
-#####                   Wanna Try?
-
-
-![Ethyl's Candy](https://i5.walmartimages.com/asr/d942f15b-6f6f-42a1-aed8-19cd9cb10a6a_1.bf1b11109a97a99ec2a661bf088e66c4.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF)
-
-
-
-Visit the GitHub repository at: 
-
-[GitHub](https://github.com/Dan-Klo/Ethyl)
-
-
-Try the deployed application for yourself at:
-
-[Deployed Application](https://ethyl.herokuapp.com/)
-
+- Some considerations for future development include:
+  - Inclusion of a service worker and local/cache first fetch policies to allow for limited offline use and installation as a PWA.
+  - Add functionality to remove or update categories and un-share lists.
+  - Ability to sort and pin lists within categories.
+  - Search function for lists by keywords/items in list.
+  - Be able to add a comment to list items.
+  - Reminder functionality.
 
 Thanks for reading. Enjoy The App! And can I interest you in a hard butterscotch candy?

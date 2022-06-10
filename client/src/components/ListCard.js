@@ -83,8 +83,8 @@ const ListCard = ({listId, isOwner, categoryId, categoryDataState, currentCatInd
                 </div>
                 <div className='list-action-container'>
                     <button className="btn-list-action" onClick={renderItems}>Refresh</button>
+                    <button className="btn-list-action" onClick={toggleMoveModal}>Move</button>
                     {isOwner && <button className="btn-list-action" onClick={toggleShareModal}>Share</button>}
-                    {isOwner && <button className="btn-list-action" onClick={toggleMoveModal}>Move</button>}
                     {isOwner && <button className="btn-list-action" onClick={toggleDeleteModal}>Delete</button>}
                 </div>
             </div>
