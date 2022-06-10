@@ -26,20 +26,20 @@ We began by defining a simple **USER STORY**
 
 <details>
 <summary><strong>User Story</strong></summary>
-AS A busy person with lots to remember
-I WANT an easy way to keep track of my life and share information with others
-I WANT to create lists and categorize them however I want
-SO THAT I can refer back to them when I need them
-I WANT to be able to easily add and check off items
-SO THAT I can remember everything I need
-I WANT to share these individual lists with others
-SO THAT they can add or remove items and collaborate
-I WANT to be able to select who I share each list with
-SO THAT I can share what is relevant but still maintain privacy
-I WANT to save the users that I’ve shared lists with before
-SO THAT I can easily share other lists with them again
-I WANT the interface to be responsive and intuitive
-SO THAT it’s easy to add and review items
+<p>AS A busy person with lots to remember<br>
+I WANT an easy way to keep track of my life and share information with others<br>
+I WANT to create lists and categorize them however I want<br>
+SO THAT I can refer back to them when I need them<br>
+I WANT to be able to easily add and check off items<br>
+SO THAT I can remember everything I need<br>
+I WANT to share these individual lists with others<br>
+SO THAT they can add or remove items and collaborate<br>
+I WANT to be able to select who I share each list with<br>
+SO THAT I can share what is relevant but still maintain privacy<br>
+I WANT to save the users that I’ve shared lists with before<br>
+SO THAT I can easily share other lists with them again<br>
+I WANT the interface to be responsive and intuitive<br>
+SO THAT it’s easy to add and review items</p>
 </code>
 </details>
 
