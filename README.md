@@ -26,7 +26,7 @@ We began by defining a simple **USER STORY**
 
 <details>
 <summary><strong>User Story</strong></summary>
-<blockquote>
+<blockquote><br>
 <p>AS A busy person with lots to remember<br>
 I WANT an easy way to keep track of my life and share information with others<br>
 I WANT to create lists and categorize them however I want<br>
