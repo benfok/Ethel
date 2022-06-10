@@ -32,7 +32,7 @@ const Header = () => {
                 </Link>
             </IconContext.Provider>
             )}
-            <h1>Ethyl</h1>
+            <h1>Ethel</h1>
             {Auth.loggedIn() ? (
                 <IconContext.Provider value={{ className: "header-icon" }}>
                     <a href="/" onClick={logout}>

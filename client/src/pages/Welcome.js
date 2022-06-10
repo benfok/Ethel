@@ -19,7 +19,7 @@ export default function Welcome() {
   return (
     <section className="main-content">
       <div id="greeting">
-        <h2 className="welcome-h2">Hello there, I'm Ethyl!</h2>
+        <h2 className="welcome-h2">Hello there, I'm Ethel!</h2>
         <img className="ethyl-pic" src= {ethylPic} alt="Ethyl" />
       </div>
         <p className="welcome-p">
