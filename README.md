@@ -26,7 +26,8 @@ We began by defining a simple **USER STORY**
 
 <details>
 <summary><strong>User Story</strong></summary>
-<blockquote><br>
+<blockquote>
+<br>
 <p>AS A busy person with lots to remember<br>
 I WANT an easy way to keep track of my life and share information with others<br>
 I WANT to create lists and categorize them however I want<br>
@@ -41,6 +42,7 @@ I WANT to save the users that I’ve shared lists with before<br>
 SO THAT I can easily share other lists with them again<br>
 I WANT the interface to be responsive and intuitive<br>
 SO THAT it’s easy to add and review items</p>
+<br>
 </blockquote>
 </details>
 
