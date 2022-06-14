@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ethyl.herokuapp.com/",
+  "homepage": "https://ethel-notes.herokuapp.com/",
   "proxy": "http://localhost:3001",
   "dependencies": {
     "@apollo/client": "^3.6.4",
