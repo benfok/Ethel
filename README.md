@@ -97,10 +97,17 @@ There are currently no tests written for this application.
 ## Screenshots
 Here are some screenshots of the deployed application
 
-![Screenshot of the main feed](./public/images/happy-place1.png)
-![Screenshot of the new post modal](./public/images/happy-place-post.png)
-![Screenshot of the profile page](./public/images/happy-place-profile.png)
+### Desktop
+![Screenshot of lists](.server/assets/ethel-desktop.png)
 
+### Mobile
+<p float="left">
+<img src="./server/assets/ethel-signup.png" alt="mobile signup" width="160"/>
+<img src="./server/assets/ethel-category.png" alt="mobile category" width="160"/>
+<img src="./server/assets/ethel-list.png" alt="mobile list" width="160"/>
+<img src="./server/assets/ethel-modal.png" alt="mobile modal" width="160"/>
+<img src="./server/assets/ethel-move.png" alt="mobile move" width="160"/>
+</p>
 
 ## Questions and Links
 Please reach out with any questions regarding the application.
