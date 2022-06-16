@@ -98,7 +98,7 @@ There are currently no tests written for this application.
 Here are some screenshots of the deployed application
 
 ### Desktop
-![Screenshot of lists](.server/assets/ethel-desktop1.png)
+![Screenshot of lists](./server/assets/ethel-desktop1.png)
 
 ### Mobile
 <p float="left">
