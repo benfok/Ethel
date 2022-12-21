@@ -22,9 +22,9 @@
   },
   "homepage": "https://github.com/Dan-Klo/Ethyl#readme",
   "devDependencies": {
-    "concurrently": "^7.2.0"
+    "concurrently": "^7.2.0",
+    "graphql": "^16.5.0"
   },
   "dependencies": {
-    "graphql": "^16.5.0"
   }
 }
